@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Code documentation</name>
+    </assembly>
+    <members>
+        <member name="T:StringExtensions">
+            <summary>
+            Extension methods to String class
+            </summary>
+        </member>
+        <member name="M:StringExtensions.ToMd5Hash(System.String)">
+            <summary>
+            Convert the input string to a byte array
+            </summary>
+            <param name="input">Parameter input requires an string argument</param>
+            <returns>Return the hexadecimal string</returns>
+        </member>
+        <member name="M:StringExtensions.ToBoolean(System.String)">
+            <summary>
+            Convert the input string to a boolean type
+            </summary>
+            <param name="input">Parameter input requires an string argument</param>
+            <returns>Return the boolean </returns>
+        </member>
+        <member name="M:StringExtensions.ToShort(System.String)">
+            <summary>
+            Convert the input string to a short type
+            </summary>
+            <param name="input">Parameter input requires an string argument</param>
+            <returns>Return the short</returns>
+        </member>
+        <member name="M:StringExtensions.ToInteger(System.String)">
+            <summary>
+            Convert the input string to a integer type
+            </summary>
+            <param name="input">Parameter input requires an string argument</param>
+            <returns>Return the integer</returns>
+        </member>
+        <member name="M:StringExtensions.ToLong(System.String)">
+            <summary>
+            Convert the input string to a long type
+            </summary>
+            <param name="input">Parameter input requires an string argument</param>
+            <returns>Return the long</returns>
+        </member>
+        <member name="M:StringExtensions.ToDateTime(System.String)">
+            <summary>
+            Convert the input string to a DateTime type
+            </summary>
+            <param name="input">Parameter input requires an string argument</param>
+            <returns>Return the DateTime</returns>
+        </member>
+        <member name="M:StringExtensions.CapitalizeFirstLetter(System.String)">
+            <summary>
+            Convert first letter of input string to capital letter
+            </summary>
+            <param name="input">Parameter input requires an string argument</param>
+            <returns>Return the string with capital first letter</returns>
+        </member>
+        <member name="M:StringExtensions.GetStringBetween(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Get string between given startString and endString from input string
+            </summary>
+            <param name="input">Parameter input requires an string argument</param>
+            <param name="startString">Parameter startString requires an string argument</param>
+            <param name="endString">Parameter endString requires an string argument</param>
+            <param name="startFrom">Parameter startFrom requires an integer argument, which is set by 0</param>
+            <returns>Return string between startString and endString</returns>
+        </member>
+        <member name="M:StringExtensions.ConvertCyrillicToLatinLetters(System.String)">
+            <summary>
+            Convert Cyrillic to Latin Letters
+            </summary>
+            <param name="input">Parameter input requires an string argument</param>
+            <returns>Return latin letters</returns>
+        </member>
+        <member name="M:StringExtensions.ConvertLatinToCyrillicKeyboard(System.String)">
+            <summary>
+            Convert Latin to Cyrillic Letters
+            </summary>
+            <param name="input">Parameter input requires an string argument</param>
+            <returns>Return cyrillic letters</returns>
+        </member>
+        <member name="M:StringExtensions.ToValidUsername(System.String)">
+            <summary>
+            Static method, which replace valid usernames with empty string
+            </summary>
+            <param name="input">Parameter input requires an string argument</param>
+            <returns>Return input string without valid usernames</returns>
+        </member>
+        <member name="M:StringExtensions.ToValidLatinFileName(System.String)">
+            <summary>
+            Static method, which replace valid filenames with empty string
+            </summary>
+            <param name="input">Parameter input requires an string argument</param>
+            <returns>Return input string without valid usernames</returns>
+        </member>
+        <member name="M:StringExtensions.GetFirstCharacters(System.String,System.Int32)">
+            <summary>
+            Get first characters by given count
+            </summary>
+            <param name="input">Parameter input requires an string argument</param>
+            <param name="charsCount">Parameter charsCount requires an positive integer argument</param>
+            <returns>Return string</returns>
+        </member>
+        <member name="M:StringExtensions.GetFileExtension(System.String)">
+            <summary>
+            Get file extension
+            </summary>
+            <param name="fileName">Parameter fileName requires an string argument</param>
+            <returns>Return file extension as string in lower letters</returns>
+        </member>
+        <member name="M:StringExtensions.ToContentType(System.String)">
+            <summary>
+            Convert file extension to content type
+            </summary>
+            <param name="fileExtension">Parameter fileName requires an string argument</param>
+            <returns>Return content type</returns>
+        </member>
+        <member name="M:StringExtensions.ToByteArray(System.String)">
+            <summary>
+            Convert string to byte array
+            </summary>
+            <param name="input">Parameter input requires an string argument</param>
+            <returns>Return byte array</returns>
+        </member>
+    </members>
+</doc>
