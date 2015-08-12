@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jQuery Overview 1", "jQuery Overview\jQuery Overview 1.csproj", "{131A6B9A-E120-4BD1-BC1A-F9229DD2AD36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jQuery Overview 2", "jQuery Overview 2\jQuery Overview 2.csproj", "{D38FFC99-431B-413F-959E-48B9C5ECF7BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{131A6B9A-E120-4BD1-BC1A-F9229DD2AD36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{131A6B9A-E120-4BD1-BC1A-F9229DD2AD36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{131A6B9A-E120-4BD1-BC1A-F9229DD2AD36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{131A6B9A-E120-4BD1-BC1A-F9229DD2AD36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D38FFC99-431B-413F-959E-48B9C5ECF7BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D38FFC99-431B-413F-959E-48B9C5ECF7BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D38FFC99-431B-413F-959E-48B9C5ECF7BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D38FFC99-431B-413F-959E-48B9C5ECF7BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
