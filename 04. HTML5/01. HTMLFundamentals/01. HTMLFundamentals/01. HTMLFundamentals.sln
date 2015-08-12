@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. RunnersHomePage", "01. HTMLFundamentals\01. RunnersHomePage.csproj", "{D31A886E-FBD7-4D27-A432-9B53930E37E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. NestedLists", "02. NestedLists\02. NestedLists.csproj", "{C9224953-0F88-46F2-AFEB-3DD1A5E6EF50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. SocialSite", "03. SocialSite\03. SocialSite.csproj", "{50F43B6C-6CEB-4851-B3D2-13CDBB2D3551}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D31A886E-FBD7-4D27-A432-9B53930E37E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31A886E-FBD7-4D27-A432-9B53930E37E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31A886E-FBD7-4D27-A432-9B53930E37E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31A886E-FBD7-4D27-A432-9B53930E37E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9224953-0F88-46F2-AFEB-3DD1A5E6EF50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9224953-0F88-46F2-AFEB-3DD1A5E6EF50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9224953-0F88-46F2-AFEB-3DD1A5E6EF50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9224953-0F88-46F2-AFEB-3DD1A5E6EF50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50F43B6C-6CEB-4851-B3D2-13CDBB2D3551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50F43B6C-6CEB-4851-B3D2-13CDBB2D3551}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50F43B6C-6CEB-4851-B3D2-13CDBB2D3551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50F43B6C-6CEB-4851-B3D2-13CDBB2D3551}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
