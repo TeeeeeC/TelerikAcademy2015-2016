@@ -1,0 +1,65 @@
+﻿body {
+    font-size: 16px;
+}
+
+body section {
+    background-color: #d8d8d8;
+    padding-top: 20px;
+    padding-left: 20px;
+    height: 775px;
+    width: 675px;
+    border-radius: 10px;
+}
+
+body section article {
+    padding-bottom: 40px;
+}
+
+body section header {
+    font-size: 2em;
+    padding-bottom: 40px;
+}
+
+.border-div {
+    width: 650px;
+    height: 195px;
+    border: 2px solid grey;
+    border-radius: 2px;
+    background-color: white;
+}
+
+img {
+    padding: 20px;
+    float: left;
+}
+
+p {
+    padding-right: 50px;
+    font-size: 1.35em;
+}
+
+#button1 {
+    position: relative;
+    left: 160px;
+    top: 10px;
+    width: 100px;
+    height: 35px;
+    font-size: 1.1em;
+    color: white;
+    background-image:url(images/button1.png);
+}
+
+#button2 {
+    position: relative;
+    left: 160px;
+    top: 10px;
+    width: 80px;
+    height: 35px;
+    font-size: 1.1em;
+    color: white;
+    background-image:url(images/button2.png);
+}
+
+body section article div p span {
+    font-weight: 900;
+}

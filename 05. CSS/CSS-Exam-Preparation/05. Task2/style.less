@@ -1,0 +1,87 @@
+﻿body, html, div, ul, li, p, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    #wrapper {
+        width: 960px;
+        font-family: Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+        font-size: 16px;
+        margin-left: 5px;
+        margin-top: 5px;
+
+        ul.menu {
+            list-style-type: none;
+
+            li {
+                display: inline-block;
+                border: 20px solid #808080;
+                padding-left: 30px;
+                padding-right: 30px;
+
+                h3 {
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    text-align: center;
+                    color: #FFFFEB;
+                }
+
+                div.image-container img {
+                    width: 120px;
+                    height: 100px;
+                    border-radius: 15px;
+                }
+
+                .subtitle {
+                    padding-top: 10px;
+                    padding-bottom: 15px;
+                    text-align: center;
+                }
+
+                .click-here {
+                    display: none;
+                }
+
+                background: #727272; /* Old browsers */
+                background: -moz-linear-gradient(top, #727272 0%, #ffffff 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#727272), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top, #727272 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top, #727272 0%,#ffffff 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(top, #727272 0%,#ffffff 100%); /* IE10+ */
+                background: linear-gradient(to bottom, #727272 0%,#ffffff 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#727272', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+            }
+
+            li:hover {
+                border: 20px solid #454545;
+                padding-left: 30px;
+                padding-right: 10px;
+                
+
+                h3 {
+                    text-decoration: underline;
+                }
+
+                .subtitle {
+                    display: none;
+                }
+
+                .click-here  {
+                    display: block;
+                    padding-bottom: 15px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    color: #FFF7DF;
+                }
+
+                div.image-container img {
+                    width: 140px;
+                    height: 110px;
+                }
+
+                background: #808080;
+            }
+        }
+    }
+}

@@ -1,0 +1,96 @@
+﻿body, html, div, h1, h2, nav, article, aside, hr, form, input {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+
+    #wrapper {
+        width: 960px;
+        margin-left: 5px;
+
+        header {
+            background-image: url(images/header-bg.png);
+
+            div#title {
+                padding-top: 20px;
+                padding-left: 20px;
+
+                h1 {
+                    font-size: 34px;
+                    color: #ffffff;
+                }
+
+                h2 {
+                    font-size: 14px;
+                    font-weight: normal;
+                    color: #C0C0A9;
+                    padding-bottom: 20px;
+                }
+            }
+
+            #nav {
+                float: right;
+
+                ul {
+                    list-style-type: none;
+
+                    li {
+                        display: inline-block;
+                        position: relative;
+                        top: -65px;
+                        right: 30px;
+                        font-size: 18px;
+                        padding-left: 15px;
+                        color: #CC6600;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
+        #line {
+                border: 3px solid #39C518;
+        }
+
+        div#content {
+            h1 {
+                color: #59770E;
+                padding-bottom: 10px;
+                padding-top: 20px;
+                font-size: 30px;
+            }
+
+            article {
+                padding-right: 200px;
+
+                p {
+                    color: #555555;
+                }
+            }
+        }
+
+        #aside {
+            float: right;
+            position: absolute;
+            top: 120px;
+            left: 760px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #59770E;
+
+            hr {
+                margin-bottom: 10px;
+                margin-top: 10px;
+                width: 200px;
+            }
+
+            form input {
+                width: 160px;
+                height: 20px;
+            }
+        }
+    }
+}

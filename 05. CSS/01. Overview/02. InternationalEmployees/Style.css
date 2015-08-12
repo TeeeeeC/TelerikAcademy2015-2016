@@ -1,0 +1,35 @@
+﻿table, tr, td, th {
+    border-collapse:collapse;
+    border: 1px solid grey;
+}
+
+th, td {
+    width: 150px;
+    height: 30px;
+    text-align: left;
+    vertical-align: central;
+    padding-left: 10px;
+}
+
+th {
+    color: white;
+    background-color: #4cff00;
+}
+
+tr:nth-child(2n+1) {
+    background-color: #dfd7d7;
+}
+
+.flag {
+    width: 25px;
+    height: 15px;
+    text-align:center;
+}
+
+.city {
+    font-family: 'Estrangelo Edessa';
+}
+
+img {
+    padding-right: 10px;
+}

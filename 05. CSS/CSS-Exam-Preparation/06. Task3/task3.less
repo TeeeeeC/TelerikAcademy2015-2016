@@ -1,0 +1,62 @@
+﻿body, html, div, p, ul, li, label, button, input {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 14px;
+    font-family: Corbel;
+
+    div#root {
+        width: 350px;
+        margin-top: 3px;
+        margin-left: 5px;
+        border-top: 3px solid black;
+        border-left: 3px solid black;
+        border-top-left-radius: 15px;
+        padding-left: 25px;
+
+        h1 {
+            padding-left: 40px;
+        }
+
+        div.widget {
+            border: 1.5px solid black;
+            padding-top: 15px;
+            border-radius: 5px;
+            width: 290px;
+
+            .box {
+                label {
+                    padding-left: 30px;
+                    font-weight: bold;
+                }
+
+                #dd-rank, #dd-title {
+                    display: inline-block;
+                    margin-bottom: 10px;
+                    margin-left: 10px;
+                }
+
+                #tb-fname, #tb-lname {
+                    width: 150px;
+                    height: 25px;
+                    padding-left: 15px;
+                    margin-bottom: 5px;
+                    margin-left: 5px;
+                    border: 2px solid #86A37D;
+                    border-radius: 5px;
+                }
+
+                ::-webkit-input-placeholder {
+                    color: black;
+                    font-style: italic;
+                }
+            }
+
+            .add-employee .dropdown ul {
+                display: none;
+            }
+        }
+    }
+}

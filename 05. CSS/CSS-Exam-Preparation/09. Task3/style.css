@@ -1,0 +1,68 @@
+﻿html,
+body,
+div,
+ul,
+li,
+img,
+a,
+h1,
+button {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-size: 14px;
+  font-family: 'Times New Roman';
+}
+body #root {
+  width: 700px;
+}
+body #root #previewer #large {
+  border: 2px solid #999999;
+  margin-top: 3px;
+  margin-left: 5px;
+  width: 450px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  padding-right: 25px;
+}
+body #root #previewer #large h1 {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+body #root #previewer #large img {
+  border: 2px solid #999999;
+  border-radius: 5px;
+}
+body #root #previewer #list {
+  position: absolute;
+  border: 2px solid #999999;
+  top: 3px;
+  left: 499px;
+  width: 204px;
+  height: 400px;
+}
+body #root #previewer #list .title {
+  display: block;
+  font-size: 22px;
+  padding-left: 35px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+body #root #previewer #list button {
+  width: 100px;
+  height: 50px;
+  border: 2px solid #999999;
+  border-radius: 5px;
+  background: #CCCCCC;
+}
+body #root #previewer #list ul {
+  list-style-type: none;
+}
+body #root #previewer #list ul li strong {
+  display: block;
+  border-top: 2px solid #999999;
+  text-align: center;
+}
+/*# sourceMappingURL=Style.css.map */

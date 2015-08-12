@@ -1,0 +1,13 @@
+﻿body {
+    font-size: 16px;
+}
+
+div {
+    font-family: Consolas;
+    color: #0094ff;
+}
+
+div p::first-letter {
+    font-family: 'Edwardian Script ITC';
+    font-size: 3em;
+}
