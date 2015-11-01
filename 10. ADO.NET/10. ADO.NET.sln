@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind", "Northwind\Northwind.csproj", "{739FB1FF-6941-4B5B-A678-C4F20BC00177}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelData", "ExcelData\ExcelData.csproj", "{17F2A609-7CA4-42F9-A132-B28DC4A0F378}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreMySQL", "StoreMySQL\StoreMySQL.csproj", "{7264E94D-48CB-425F-BA50-F65D2EEFE80A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{739FB1FF-6941-4B5B-A678-C4F20BC00177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{739FB1FF-6941-4B5B-A678-C4F20BC00177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{739FB1FF-6941-4B5B-A678-C4F20BC00177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{739FB1FF-6941-4B5B-A678-C4F20BC00177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17F2A609-7CA4-42F9-A132-B28DC4A0F378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17F2A609-7CA4-42F9-A132-B28DC4A0F378}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17F2A609-7CA4-42F9-A132-B28DC4A0F378}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17F2A609-7CA4-42F9-A132-B28DC4A0F378}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7264E94D-48CB-425F-BA50-F65D2EEFE80A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7264E94D-48CB-425F-BA50-F65D2EEFE80A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7264E94D-48CB-425F-BA50-F65D2EEFE80A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7264E94D-48CB-425F-BA50-F65D2EEFE80A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
