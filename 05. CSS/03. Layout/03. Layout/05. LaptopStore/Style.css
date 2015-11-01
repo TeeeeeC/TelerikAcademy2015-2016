@@ -1,0 +1,95 @@
+﻿body {
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    font-family:  Candara;
+}
+
+section {
+    height: 830px;
+    width: 1100px;
+    border: 3px solid #252525;
+    border-radius: 15px;
+    padding: 10px 10px 10px 10px;
+}
+
+section header h1 {
+    position: relative;
+    top: -15px;
+    left: 250px;
+    font-size: 2.4em;
+    padding-left: 5px;
+}
+
+a {
+    color: #57c1f5;
+}
+
+hr {
+    position: relative;
+    top: -25px;
+    border: 2px solid #4c4c4c;
+    width: 1060px;
+}
+
+#table {
+    display: table-cell;
+    position: relative;
+    top: -20px;
+    left: 5px;
+    border: 3px solid #4c4c4c;
+    width: 680px;
+    height: 710px;
+}
+.table-row {
+    padding-left: 10px;
+    padding-top: 20px;
+}
+
+.table-cell {
+    display: inline-block;
+    border: 3px solid #4c4c4c;
+    width: 290px;
+    height: 190px;
+    margin-right: 5px;
+}
+
+legend {
+    text-align: center;
+    font-size: 1.8em;
+}
+
+.text {
+    font-size: 1.6em;
+    line-height: 25px;
+}
+
+img {
+    margin-top: -20px;
+    float: left;
+    width: 170px;
+}
+
+.inline-par {
+    display: inline;
+    padding-left: 22px;
+}
+
+.range-form {
+    float: right;
+    position: relative;
+    top: -600px;
+    left: -50px;
+    font-size: 2.2em;
+    margin-top: -10px;
+}
+
+.range-size {
+    width: 300px;
+    height: 150px;
+    margin-top: -60px;
+}
+
+.range-form p {
+    margin-top: -30px;
+}

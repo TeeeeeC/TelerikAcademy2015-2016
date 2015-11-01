@@ -1,0 +1,95 @@
+﻿body,
+html,
+header,
+h1,
+ul,
+li,
+article,
+p {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+html #wrapper,
+body #wrapper {
+  width: 960px;
+  margin-left: 5px;
+}
+html #wrapper header,
+body #wrapper header {
+  background-image: url(header-bg.png);
+  padding: 15px 15px;
+}
+html #wrapper header h1,
+body #wrapper header h1 {
+  float: left;
+  font-size: 16px;
+  color: #575E5B;
+}
+html #wrapper header #nav ul,
+body #wrapper header #nav ul {
+  float: right;
+}
+html #wrapper header #nav ul li,
+body #wrapper header #nav ul li {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0 8px;
+  font-size: 14px;
+  color: #575E5B;
+}
+html #wrapper #searchBar,
+body #wrapper #searchBar {
+  background-color: black;
+  font-size: 14px;
+  padding: 2px;
+}
+html #wrapper #searchBar #archives,
+body #wrapper #searchBar #archives {
+  color: #C6C6C6;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+html #wrapper #searchBar #archives a,
+body #wrapper #searchBar #archives a {
+  color: #C6C6C6;
+  text-decoration: none;
+}
+html #wrapper #searchBar #search,
+body #wrapper #searchBar #search {
+  float: right;
+  position: relative;
+  bottom: 8px;
+  right: 10px;
+}
+html #wrapper #searchBar #search a,
+body #wrapper #searchBar #search a {
+  color: #C6C6C6;
+  text-decoration: none;
+}
+html #content,
+body #content {
+  background-color: #FFFFFF;
+}
+html #content h1,
+body #content h1 {
+  font-size: 24px;
+  color: #575E5B;
+  margin: 15px 0 15px 0;
+}
+html #content article p,
+body #content article p {
+  padding-bottom: 15px;
+  padding-right: 15px;
+  font-size: 14px;
+  color: #575E5B;
+}
+html .clear,
+body .clear {
+  clear: both;
+}
+/*# sourceMappingURL=style.css.map */

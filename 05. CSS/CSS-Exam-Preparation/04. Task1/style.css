@@ -1,0 +1,89 @@
+﻿body,
+html,
+div,
+h1,
+h2,
+nav,
+article,
+aside,
+hr,
+form,
+input {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+body #wrapper {
+  width: 960px;
+  margin-left: 5px;
+}
+body #wrapper header {
+  background-image: url(images/header-bg.png);
+}
+body #wrapper header div#title {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+body #wrapper header div#title h1 {
+  font-size: 34px;
+  color: #ffffff;
+}
+body #wrapper header div#title h2 {
+  font-size: 14px;
+  font-weight: normal;
+  color: #C0C0A9;
+  padding-bottom: 20px;
+}
+body #wrapper header #nav {
+  float: right;
+}
+body #wrapper header #nav ul {
+  list-style-type: none;
+}
+body #wrapper header #nav ul li {
+  display: inline-block;
+  position: relative;
+  top: -65px;
+  right: 30px;
+  font-size: 18px;
+  padding-left: 15px;
+  color: #CC6600;
+  font-weight: bold;
+}
+body #wrapper #line {
+  border: 3px solid #39C518;
+}
+body #wrapper div#content h1 {
+  color: #59770E;
+  padding-bottom: 10px;
+  padding-top: 20px;
+  font-size: 30px;
+}
+body #wrapper div#content article {
+  padding-right: 200px;
+}
+body #wrapper div#content article p {
+  color: #555555;
+}
+body #wrapper #aside {
+  float: right;
+  position: absolute;
+  top: 120px;
+  left: 760px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #59770E;
+}
+body #wrapper #aside hr {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 200px;
+}
+body #wrapper #aside form input {
+  width: 160px;
+  height: 20px;
+}
+/*# sourceMappingURL=Style.css.map */

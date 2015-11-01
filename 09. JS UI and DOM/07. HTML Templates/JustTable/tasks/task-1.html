@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script src="jquery-2.1.4.js"></script>
+    <script src="handlebars-v3.0.3.js"></script>
+    <script id="template" type="text/x-handlebars-template">
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    {{#each headers}}
+                    <th>{{this}}</th>
+                    {{/each}}
+                </tr>
+            </thead>
+            <tbody>
+                {{#each items}}
+                <tr>
+                    <td>{{@index}}</td>
+                    {{#each this}}
+                    <td>{{this}}</td>
+                    {{/each}}
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </script>
+    <script src="task-1.js"></script>
+</body>
+</html>
