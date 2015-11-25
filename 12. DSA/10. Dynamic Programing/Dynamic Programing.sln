@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogeCoin", "DogeCoin\DogeCoin.csproj", "{6B1E15A8-713E-4EFB-A24E-B7FF9985409D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knapsack", "Food\Knapsack.csproj", "{68E1C8AE-5262-47AD-9D5B-893ECED84F8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimumEditDistance", "MinimumEditDistance\MinimumEditDistance.csproj", "{06DE49D1-9D01-4059-B987-AE258A242F6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tribonaci", "Tribonaci\Tribonaci.csproj", "{12E57CC4-A5D3-46D1-A959-325C885FB439}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSum", "SuperSum\SuperSum.csproj", "{714F58AE-449A-403E-AC63-BFD8D700205B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brackets", "Brackets\Brackets.csproj", "{AD12A086-160D-4D10-ADEC-A1FF4D62E0AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guitar", "Guitar\Guitar.csproj", "{B7B95EE7-BCFC-4552-A6A3-BE8E7EF02ED4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B1E15A8-713E-4EFB-A24E-B7FF9985409D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B1E15A8-713E-4EFB-A24E-B7FF9985409D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B1E15A8-713E-4EFB-A24E-B7FF9985409D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B1E15A8-713E-4EFB-A24E-B7FF9985409D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68E1C8AE-5262-47AD-9D5B-893ECED84F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68E1C8AE-5262-47AD-9D5B-893ECED84F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68E1C8AE-5262-47AD-9D5B-893ECED84F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68E1C8AE-5262-47AD-9D5B-893ECED84F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06DE49D1-9D01-4059-B987-AE258A242F6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06DE49D1-9D01-4059-B987-AE258A242F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06DE49D1-9D01-4059-B987-AE258A242F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06DE49D1-9D01-4059-B987-AE258A242F6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12E57CC4-A5D3-46D1-A959-325C885FB439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12E57CC4-A5D3-46D1-A959-325C885FB439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12E57CC4-A5D3-46D1-A959-325C885FB439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12E57CC4-A5D3-46D1-A959-325C885FB439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{714F58AE-449A-403E-AC63-BFD8D700205B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{714F58AE-449A-403E-AC63-BFD8D700205B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{714F58AE-449A-403E-AC63-BFD8D700205B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{714F58AE-449A-403E-AC63-BFD8D700205B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD12A086-160D-4D10-ADEC-A1FF4D62E0AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD12A086-160D-4D10-ADEC-A1FF4D62E0AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD12A086-160D-4D10-ADEC-A1FF4D62E0AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD12A086-160D-4D10-ADEC-A1FF4D62E0AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7B95EE7-BCFC-4552-A6A3-BE8E7EF02ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7B95EE7-BCFC-4552-A6A3-BE8E7EF02ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7B95EE7-BCFC-4552-A6A3-BE8E7EF02ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7B95EE7-BCFC-4552-A6A3-BE8E7EF02ED4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
