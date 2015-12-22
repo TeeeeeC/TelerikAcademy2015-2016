@@ -1,0 +1,46 @@
+﻿<div ng-controller="HomeCtrl" style="width: 90%; margin-left: 5%">
+    <div class="jumbotron text-center">
+        <h1>Welcome to Source Control System</h1>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-4">
+            <strong>Users</strong>
+        </div>
+        <div class="col-md-4">
+            <strong>Projects</strong>
+        </div>
+        <div class="col-md-4">
+            <strong>Commits</strong>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-4">
+            {{users}}
+        </div>
+        <div class="col-md-4">
+            {{projects}}
+        </div>
+        <div class="col-md-4">
+            {{commits}}
+        </div>
+    </div>
+
+    <div class="row text-center" style="margin-top: 30px">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Latest projects</h3>
+                </div>
+                <div last-projects />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Latest commits</h3>
+                </div>
+                <div last-commits />
+            </div>
+        </div>
+    </div>
+</div>

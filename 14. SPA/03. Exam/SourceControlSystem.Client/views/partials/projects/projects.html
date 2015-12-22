@@ -1,0 +1,56 @@
+﻿<div ng-controller="ProjectsCtrl" style="margin-left: 10%" class="text-center">
+    <h1>
+        Projects <a href="#/projects/add" class="btn btn-primary" ng-show="identity" style="margin-left: 10%">Add</a>
+    </h1>
+    <div ng-show="identity" style="width: 90%">
+        <div class="row text-center">
+            <div class="col-md-2">Sort</div>
+            <div class="col-md-2">Order</div>
+            <div class="col-md-2">ByUser</div>
+            <div class="col-md-1">OnlyPublic</div>
+            <div class="col-md-2">Filter</div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-2">
+                <select class="form-control" id="select" ng-init="req.OrderBy='date'" ng-model="req.OrderBy">
+                    <option value="date">Date</option>
+                    <option value="collaborators">Collaborators</option>
+                    <option value="name">Name</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select class="form-control" id="select" ng-init="req.OrderType='asc'" ng-model="req.OrderType">
+                    <option value="asc">Asc</option>
+                    <option value="desc">Desc</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input type="text" placeholder="ByUser" class="form-control" ng-model="req.ByUser" />
+            </div>
+            <div class="col-md-1">
+                <input type="checkbox" class="form-control" ng-model="req.OnlyPublic" />
+            </div>
+            <div class="col-md-3">
+                <input type="text" placeholder="By name or description" class="form-control" ng-model="req.Filter" />
+            </div>
+            <div class="col-md-2 text-left">
+                <button class="btn btn-primary" ng-click="filter(req)">Filter</button>
+            </div>
+        </div>
+    </div>
+    <div last-projects />
+    <div class="row" ng-show="identity">
+        <div class="col-md-6 text-right">
+            <button class="btn btn-primary" ng-click="prevPage(req)">&lt;&lt;</button>
+            <input class="btn btn-sm" type="number" min="1" ng-model="req.Page" />
+            <button class="btn btn-primary" ng-click="nextPage(req)">&gt;&gt;</button>
+        </div>
+        <div class="col-md-6 text-left">
+            <label>PageSize</label>
+            <input type="number" ng-model="req.PageSize" min="1" ng-init="req.PageSize=10" />
+        </div>
+    </div>
+
+</div>
+
