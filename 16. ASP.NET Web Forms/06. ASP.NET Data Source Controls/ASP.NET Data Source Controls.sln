@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.World", "1.World\1.World.csproj", "{5F5E7EFB-BA28-4A9B-AE65-E77DACF0D78D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.TODOList", "2.TODOList\2.TODOList.csproj", "{812ABFD6-A0B4-4D08-A5AF-3485A793F9F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.TweetsAggregator", "3.TweetsAggregator\3.TweetsAggregator.csproj", "{CCD37492-9C68-4247-B892-F79F0B2F53D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F5E7EFB-BA28-4A9B-AE65-E77DACF0D78D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F5E7EFB-BA28-4A9B-AE65-E77DACF0D78D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F5E7EFB-BA28-4A9B-AE65-E77DACF0D78D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F5E7EFB-BA28-4A9B-AE65-E77DACF0D78D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{812ABFD6-A0B4-4D08-A5AF-3485A793F9F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{812ABFD6-A0B4-4D08-A5AF-3485A793F9F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{812ABFD6-A0B4-4D08-A5AF-3485A793F9F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{812ABFD6-A0B4-4D08-A5AF-3485A793F9F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCD37492-9C68-4247-B892-F79F0B2F53D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCD37492-9C68-4247-B892-F79F0B2F53D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCD37492-9C68-4247-B892-F79F0B2F53D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCD37492-9C68-4247-B892-F79F0B2F53D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
