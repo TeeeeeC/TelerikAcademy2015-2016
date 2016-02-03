@@ -1,0 +1,139 @@
+﻿@model  IEnumerable<MVCEssentials.Web.Models.Data>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@Scripts.Render("~/bundles/jquery")
+
+<div class="row">
+    <form class="form-horizontal">
+        <fieldset>
+            <legend>Bit Calculator</legend>
+            <div class="form-group">
+                <label for="quantity" class="col-lg-2 control-label">Quantity</label>
+                <div class="col-lg-10">
+                    <input type="number" class="form-control" id="qty" value="1" min="1">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="select" class="col-lg-2 control-label">Type</label>
+                <div class="col-lg-10">
+                    <select class="form-control" id="type">
+                        @foreach (var type in Model)
+                        {
+                            <option value="@type.Key">@type.Key</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="select" class="col-lg-2 control-label">Kilo</label>
+                <div class="col-lg-10">
+                    <select class="form-control" id="kilo">
+                        <option selected="selected">1024</option>
+                        <option>1000</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<div class="row">
+    @foreach (var type in Model)
+    {
+        <div class="row" id="table-data">
+            <div class="col-md-2">
+                @type.Key
+            </div>
+            <div class="col-md-6" id="@type.Key.Split( new string[] { " - " }, StringSplitOptions.RemoveEmptyEntries)[1]">
+                @type.Value
+            </div>
+        </div>
+    }
+</div>
+
+
+<script>
+    var types = ['b', 'B', 'Kb', 'KB', 'Mb', 'MB', 'Gb', 'GB',
+        'Tb', 'TB', 'Pb', 'PB', 'Eb', 'EB', 'Zb', 'ZB', 'Yb', 'YB'];
+
+    $('#type').change(function (ev) {
+        var type = ev.target.value.split(' - ')[1];
+        var kilo = $('#kilo').val();
+        var qty = $('#qty').val();
+
+        calculate(type, kilo, qty)
+    });
+
+    $('#kilo').change(function (ev) {
+        var kilo = ev.target.value;
+        var type = $('#type').val().split(' - ')[1];
+        var qty = $('#qty').val();
+
+        calculate(type, kilo, qty)
+    });
+
+    $('#qty').change(function (ev) {
+        var qty = ev.target.value;
+        var type = $('#type').val().split(' - ')[1];
+        var kilo = $('#kilo').val();
+
+        calculate(type, kilo, qty)
+    });
+
+    function calculate(type, kilo, qty) {
+        var index = types.indexOf(type);
+        $('#' + type).html(qty);
+
+        if (type.indexOf('B') > -1) {
+            var start = 1;
+            for (var i = index - 1; i >= 0; i -= 1) {
+                if (i % 2 == 0) {
+                    $('#' + types[i]).html(start * 8 * qty);
+                }
+                else {
+                    start *= qty * kilo;
+                    $('#' + types[i]).html(start);
+                }
+            }
+
+            start = 1;
+            for (var i = index + 1; i < types.length; i += 1) {
+                if (i % 2 == 0) {
+                    start = ((start / kilo) * 8) * qty;
+                    $('#' + types[i]).html(start);
+                }
+                else {
+                    start /= 8;
+                    $('#' + types[i]).html(start);
+                }
+            }
+        } else {
+            var start = 1;
+            for (var i = index - 1; i >= 0; i -= 1) {
+                if (i % 2 == 1) {
+                    $('#' + types[i]).html((start * qty * kilo) / 8);
+                }
+                else {
+                    start *= qty * kilo;
+                    $('#' + types[i]).html(start);
+                }
+            }
+
+            start = 1;
+            for (var i = index + 1; i < types.length; i += 1) {
+                if (i % 2 == 1) {
+                    $('#' + types[i]).html((start / 8) * qty);
+                }
+                else {
+                    start = (start / kilo) * qty;
+                    $('#' + types[i]).html(start);
+                }
+            }
+        }
+    }
+</script>
+
+
