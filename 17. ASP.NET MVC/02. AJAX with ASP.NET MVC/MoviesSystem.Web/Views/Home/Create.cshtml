@@ -1,0 +1,95 @@
+﻿@model MoviesSystem.Web.Models.Movie
+
+@using (Ajax.BeginForm("Create", "Home",
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnBegin = "startValidation",
+        OnSuccess = "redirect"
+    }))
+{
+    <form class="form-horizontal">
+        <fieldset>
+            <legend>Create New Movie</legend>
+            <div class="form-group">
+                <label for="title" class="col-lg-2 control-label">Title</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="title" placeholder="Title" name="Movie.Title">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="director" class="col-lg-2 control-label">Director</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="director" placeholder="Director" name="Movie.Director">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="year" class="col-lg-2 control-label">Year</label>
+                <div class="col-lg-10">
+                    <input type="number" class="form-control" id="year" placeholder="Year" name="Movie.Year" min="1940" max="2016">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="leadingMaleRole" class="col-lg-2 control-label">LeadingMaleRole</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="leadingMaleRole" placeholder="LeadingMaleRole" name="Movie.LeadingMaleRole">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="leadingFemaleRole" class="col-lg-2 control-label">LeadingFemaleRole</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="leadingFemaleRole" placeholder="LeadingFemaleRole" name="Movie.LeadingFemaleRole">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ageLeadingMaleRole" class="col-lg-2 control-label">AgeLeadingMaleRole</label>
+                <div class="col-lg-10">
+                    <input type="number" class="form-control" id="ageLeadingMaleRole" placeholder="AgeLeadingMaleRole" name="Movie.AgeLeadingMaleRole" min="16" max="100">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ageLeadingFemaleRole" class="col-lg-2 control-label">AgeLeadingFemaleRole</label>
+                <div class="col-lg-10">
+                    <input type="number" class="form-control" id="ageLeadingFemaleRole" placeholder="AgeLeadingFemaleRole" name="Movie.AgeLeadingFemaleRole" min="16" max="100">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="studio" class="col-lg-2 control-label">Studio</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="studio" placeholder="Studio" name="Movie.Studio">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="studioAddress" class="col-lg-2 control-label">StudioAddress</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="studioAddress" placeholder="StudioAddress" name="Movie.StudioAddress">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <input type="submit" class="btn btn-primary" />
+                </div>
+            </div>
+        </fieldset>
+    </form>
+}
+
+<script>
+    function startValidation() {
+        if ($('#title').val() && $('#director').val() && $('#year').val() && $('#leadingMaleRole').val() && $('#leadingFemaleRole').val()
+            && $('#ageLeadingMaleRole').val() && $('#ageLeadingFemaleRole').val() && $('#studio').val() && $('#studioAddress').val()) {
+            
+            return true;
+        }
+
+        alert("All field are required!")
+
+        return false;
+    }
+
+    function redirect(result) {
+        if (result.url) {
+            window.location.href = result.url;
+        }
+    }
+</script>

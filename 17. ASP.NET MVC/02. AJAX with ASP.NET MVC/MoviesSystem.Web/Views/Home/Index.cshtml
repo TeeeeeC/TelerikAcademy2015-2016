@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MoviesSystem.Web.Models.Movie>
+
+<div class="jumbotron text-center">
+    <h1>Movies</h1>
+</div>
+
+<a href="/home/create" class="btn btn-primary">Create</a>
+
+@foreach (var movie in Model)
+{
+    <div class="jumbotron row text-center">
+        <div class="col-md-6">
+            <h2>@movie.Title</h2>
+            <p>Director: @movie.Director</p>
+            <p>Leading male role: @movie.LeadingMaleRole</p>
+            <p>Age male role: @movie.AgeLeadingMaleRole</p>
+            <p>Leading female role: @movie.LeadingFemaleRole</p>
+            <p>Age female role: @movie.AgeLeadingFemaleRole</p>
+            <p>Year: @movie.Year</p>
+            <p>Studio: @movie.Studio</p>
+            <p>Studio address: @movie.StudioAddress</p>
+            <a href="/home/edit/@movie.Id" class="btn btn-primary">Edit</a>
+            @Ajax.ActionLink("Delete", "Delete", new { id = @movie.Id }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "redirect" })
+        </div>
+    </div>
+}
+
+<script>
+    function redirect(result) {
+        window.location.href = result.url;
+    }
+</script>
