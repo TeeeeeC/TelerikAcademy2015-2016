@@ -1,0 +1,16 @@
+﻿@model IEnumerable<TwitterSystem.Web.Models.TweetViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Tweets by Tag</h1>
+@foreach (var tweet in Model)
+{
+    <div class="jumbotron text-center">
+        <h1>Username: @tweet.User.UserName</h1>
+        <p>FullName: @tweet.User.FullName</p>
+        <p>@tweet.Text</p>
+        <p><i>created on @tweet.TimeStamp</i></p>
+        <p>Likes: @tweet.LikesCount</p>
+    </div>
+}
