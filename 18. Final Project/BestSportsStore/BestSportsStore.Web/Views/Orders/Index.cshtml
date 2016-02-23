@@ -1,0 +1,27 @@
+﻿@using BestSportsStore.Web.Models.Orders
+@model IEnumerable<OrderViewModel>
+
+@{
+    ViewBag.Title = "My Orders";
+}
+
+<div class="text-center">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-1">Order Id</div>
+    <div class="col-md-5">Products</div>
+    <div class="col-md-2">Sizes</div>
+    <div class="col-md-2">Total Price</div>
+</div>
+
+@foreach (var order in Model)
+{
+    <div class="row">
+        <div class="col-md-1">@order.Id</div>
+        <div class="col-md-5">@order.ProductTitles</div>
+        <div class="col-md-2">@order.ProductSizes</div>
+        <div class="col-md-2">@order.TotalPrice £</div>
+    </div>
+}

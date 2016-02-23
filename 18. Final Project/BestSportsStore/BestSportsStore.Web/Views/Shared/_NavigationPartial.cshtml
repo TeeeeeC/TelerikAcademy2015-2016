@@ -1,0 +1,93 @@
+﻿@using BestSportsStore.Web.Models.Menu
+
+@model MenuViewModel
+
+@Styles.Render("~/Content/kendo/css")
+@Scripts.Render("~/bundles/kendo")
+
+@(Html.Kendo()
+    .Menu()
+    .Name("menu")
+    .Direction(MenuDirection.Bottom)
+    .Items(items =>
+    {
+        items.Add().Text("Home").Action("Index", "Home");
+
+        foreach (var category in Model.Categories)
+        {
+            items.Add()
+            .Text(category.Name).Action("Index", "Products", new { category = category.Name, page = 1})
+            .Items(children =>
+            {
+                foreach (var subCategory in category.SubCategories)
+                {
+                    children.Add().Text(subCategory.Name).Action("Index", "Products", new { category = category.Name, subCategory = subCategory.Name, page = 1 });
+                }
+            });
+        }
+
+        items.Add()
+            .Text("Sports").Action("Index", "Sports")
+            .Items(children =>
+            {
+                foreach (var sport in Model.Sports)
+                {
+                    children.Add()
+                    .Text(sport.Name)
+                    .Action("Index", "Sports", new { sport = sport.Name });
+                }
+            });
+
+        items.Add()
+            .Text("Brands").Action("Index", "Brands")
+            .Items(children =>
+            {
+                foreach (var brand in Model.Brands)
+                {
+                    children.Add()
+                    .Text(brand.Name)
+                    .Action("Index", "Brands", new { brand = brand.Name });
+                }
+            });
+
+        items.Add()
+            .Text("My Orders").Action("Index", "Orders").HtmlAttributes(
+            new
+            {
+                @class = Request.IsAuthenticated ? null : "hidden"
+            });
+
+        if(this.User.IsInRole("Administator"))
+        {
+            items.Add()
+                .Text("Admin")
+                .Items(children =>
+                {
+                    children.Add()
+                        .Text("Categories")
+                        .Action("Index", "Categories", new { area = "Administration" });
+
+                    children.Add()
+                        .Text("SubCategories")
+                        .Action("SubCategories", "Categories", new { area = "Administration" });
+
+                    children.Add()
+                        .Text("Sizes")
+                        .Action("Index", "Sizes", new { area = "Administration" });
+
+                    children.Add()
+                        .Text("Brands")
+                        .Action("Index", "Brands", new { area = "Administration" });
+
+                    children.Add()
+                        .Text("Sports")
+                        .Action("Index", "Sports", new { area = "Administration" });
+
+                    children.Add()
+                        .Text("Products")
+                        .Action("Index", "Products", new { area = "Administration" });
+                });
+        }
+    })
+)
+

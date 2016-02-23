@@ -1,0 +1,35 @@
+﻿@using BestSportsStore.Web.Models.Menu.Category
+
+@{
+    ViewBag.Title = "SubCategories";
+    const string ControllerName = "Categories";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@(Html.Kendo()
+    .Grid<SubCategoryViewModel>()
+    .Name("gridSubCategories")
+    .Columns(cols =>
+    {
+        cols.Bound(s => s.Name);
+        cols.Command(com => com.Edit()).Title("Edit");
+        cols.Command(com => com.Destroy()).Title("Delete");
+    })
+    .ColumnMenu()
+    .Pageable(page => page.Refresh(true))
+    .Sortable()
+    .Editable(edit => edit.Mode(GridEditMode.InLine))
+    .ToolBar(toolbar => toolbar.Create())
+    .DataSource(data =>
+        data
+            .Ajax()
+            .Model(m =>
+            {
+                m.Id(s => s.Id);
+            })
+            .Read(read => read.Action("ReadSubCategories", ControllerName))
+            .Create(create => create.Action("CreateSubCategories", ControllerName))
+            .Update(update => update.Action("UpdateSubCategories", ControllerName))
+            .Destroy(destroy => destroy.Action("DestroySubCategories", ControllerName))
+            ))

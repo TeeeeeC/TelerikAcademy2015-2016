@@ -1,0 +1,67 @@
+﻿@using BestSportsStore.Web.Models.Product
+@using Microsoft.AspNet.Identity;
+
+@model ProductViewModel
+
+
+@{
+    ViewBag.Title = "Details";
+    var userId = this.User.Identity.GetUserId();
+}
+
+<h1>Product @ViewBag.Title</h1>
+
+<div class="row text-center">
+    <div class="col-md-8 text-center">
+        <h2>@Model.Title</h2>
+        <div class="col-md-3" style="padding-top: 20px">
+            @if (!Model.Likes.Any(l => l.UserId == userId))
+            {
+                @Html.ActionLink(Model.Likes.Count.ToString(), "Like", "Likes", new
+               { productId = Model.Id, url = Request.Url },
+                        new { @class = "glyphicon glyphicon-thumbs-up btn btn-primary", style = "width: 100px; height: 40px;font-size: 20px;" })
+            }
+            else
+            {
+                <button class="glyphicon glyphicon-thumbs-up btn btn-default" style="width: 100px; height: 40px;font-size: 20px; color: forestgreen">
+                    @Model.Likes.Count.ToString()
+                </button>
+            }
+            <h3>Brand: @Model.Brand.Name</h3>
+            <h3>Sport: @Model.Sport.Name</h3>
+        </div>
+        <div class="col-md-5">
+            <img src="@Model.ImageUrl" />
+        </div>
+        <div class="col-md-4">
+            <h3 style="color: red"><strong>@Model.Price £</strong></h3>
+            <p>@Model.Content</p>
+        </div>
+    </div>
+    <div class="col-md-2 text-center">
+        <br /><br /><br /><br /><br />
+        @using (Html.BeginForm("Index", "Buy", new { productId = Model.Id, url = Request.Url.PathAndQuery }))
+            {
+            <input type="submit" value="Buy" class="btn btn-danger glyphicon glyphicon-shopping-cart" style="width: 100px; height: 40px; font-size: 20px;">
+            <h3>
+                Available Size:
+                @Html.DropDownList("productSize", Model.Sizes.Select(s => new SelectListItem { Text = s.Value.ToString() }), new { @class = "form-control" })
+            </h3>
+        }
+    </div>
+</div>
+
+@if(Request.IsAuthenticated)
+{
+   <div>@Html.Action("Index", "Comments", new { productId = Model.Id})</div> 
+}
+
+<h3>Comments</h3>
+
+@foreach (var comment in Model.Comments)
+{
+    <div class="row">
+       <h3>@comment.User.UserName commented... on @comment.CreatedOn.ToLongDateString()</h3>
+       <p>@comment.Content</p>
+    </div>
+}

@@ -1,0 +1,30 @@
+﻿@using BestSportsStore.Web.Models.Product
+@model SearchViewModel
+
+@{
+    var controllerName = string.Empty;
+    if(Model.Category != null && Model.Category != string.Empty)
+    {
+        controllerName = "Products";
+    }
+    else if(Model.Brand != null && Model.Brand != string.Empty)
+    {
+        controllerName = "Brands";
+    }
+    else
+    {
+        controllerName = "Sports";
+    }
+}
+
+@using (Html.BeginForm("Index", controllerName, new { category = Model.Category, subCategory = Model.SubCategory, brand = Model.Brand, sport = Model.Sport }))
+{
+    <div class="navbar-fixed-top" style="margin-left: 65%; margin-top: 50px;">
+        @(Html.Kendo().AutoComplete()
+          .Name("query")
+          .HtmlAttributes(new { style = "width: 33%" })
+          .Filter("contains")
+          .Placeholder("Search by Title or Content...").BindTo(Model.Data))
+        <input type="submit" value="Search" class="btn btn-primary" style="margin-left: -10px" />
+    </div>
+}

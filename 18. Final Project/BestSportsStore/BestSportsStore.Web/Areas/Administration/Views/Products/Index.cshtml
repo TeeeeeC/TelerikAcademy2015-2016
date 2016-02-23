@@ -1,0 +1,41 @@
+﻿@using BestSportsStore.Web.Areas.Administration.Models
+
+@{
+    ViewBag.Title = "Index";
+    const string ControllerName = "Products";
+}
+
+<h2>@ControllerName</h2>
+
+@(Html.Kendo()
+    .Grid<ProductGridViewModel>()
+    .Name("gridProducts").HtmlAttributes(new { style = "width: 100%"})
+    .Columns(cols =>
+    {
+        cols.Bound(p => p.Title);
+        cols.Bound(p => p.Content);
+        cols.Bound(p => p.Price);
+        cols.Bound(p => p.ImageUrl).Width(100);
+        cols.Bound(p => p.Brand).ClientTemplate("#=Brand.Name#");
+        cols.Bound(p => p.Category).ClientTemplate("#=Category.Name#");
+        cols.Bound(p => p.Sport).ClientTemplate("#=Sport.Name#");
+        cols.Bound(p => p.SubCategory).ClientTemplate("#=SubCategory.Name#");
+        cols.Command(com => com.Edit()).Title("Edit");
+        cols.Command(com => com.Destroy()).Title("Delete");
+    })
+    .ColumnMenu()
+    .Pageable(page => page.Refresh(true))
+    .Sortable()
+    .Editable(edit => edit.Mode(GridEditMode.InLine))
+    .ToolBar(toolbar => toolbar.Create().Text("Add new product"))
+    .DataSource(data =>
+        data
+            .Ajax()
+            .Model(m =>
+            {
+                m.Id(p => p.Id);
+            })
+            .Read(read => read.Action("Read", ControllerName))
+            .Create(create => create.Action("Create", ControllerName))
+            .Update(update => update.Action("Update", ControllerName))
+            .Destroy(destroy => destroy.Action("Destroy", ControllerName))))
