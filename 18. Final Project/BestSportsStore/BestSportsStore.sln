@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{28F86A0A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestSportsStore.Web.Infrastructure", "BestSportsStore.Web.Infrastructure\BestSportsStore.Web.Infrastructure.csproj", "{B2A2815C-96D0-48F8-9342-923664375138}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{AF8C3D45-F910-45E0-AA5E-9DAE9D68FB24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestSportsStore.Common", "BestSportsStore.Common\BestSportsStore.Common.csproj", "{DE95A52D-C4B9-476C-9A7C-D5A44814943F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,10 @@ Global
 		{B2A2815C-96D0-48F8-9342-923664375138}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2A2815C-96D0-48F8-9342-923664375138}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2A2815C-96D0-48F8-9342-923664375138}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE95A52D-C4B9-476C-9A7C-D5A44814943F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE95A52D-C4B9-476C-9A7C-D5A44814943F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE95A52D-C4B9-476C-9A7C-D5A44814943F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE95A52D-C4B9-476C-9A7C-D5A44814943F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +72,6 @@ Global
 		{32EF5171-5892-4BC5-A9DE-18CC87B7B327} = {5B78B890-BC59-496A-9F9F-2B1D2BC308CC}
 		{C028190A-8906-45FA-B9A8-E842D6A79801} = {28F86A0A-28CC-44B4-8748-C73878617023}
 		{B2A2815C-96D0-48F8-9342-923664375138} = {5B78B890-BC59-496A-9F9F-2B1D2BC308CC}
+		{DE95A52D-C4B9-476C-9A7C-D5A44814943F} = {AF8C3D45-F910-45E0-AA5E-9DAE9D68FB24}
 	EndGlobalSection
 EndGlobal

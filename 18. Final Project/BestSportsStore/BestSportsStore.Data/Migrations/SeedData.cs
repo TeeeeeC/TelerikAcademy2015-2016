@@ -8,11 +8,12 @@
     using System.Linq;
 
     using Models;
-    
+
     public class SeedData
     {
         private const string AdminRoleName = "Administator";
         private const string UserName = "user";
+        private const int UsersCount = 5;
         private const string Password = "123456";
 
         private BestSportsStoreDbContext context;
@@ -26,20 +27,21 @@
 
         public void Seed()
         {
-            //this.AddAdmin("Admin", "admina");
-            //this.AddUsers(5);
-            //this.AddCategoriesAndSubCategories();
-            //this.AddSports();
-            //this.AddBrands();
-            //this.AddSizes();
-            //this.AddProducts();
+            this.AddAdmin("Admin", "admina");
+            this.AddUsers(UsersCount);
+            this.AddCategoriesAndSubCategories();
+            this.AddSports();
+            this.AddBrands();
+            this.AddSizes();
+            this.AddProducts();
             this.AddLikes();
+            this.AddComments();
         }
 
         private void AddAdmin(string username, string password)
         {
             this.context.Roles.Add(new IdentityRole { Name = AdminRoleName });
-
+            
             var hash = this.passwordHasher.HashPassword(password);
             context.Users.Add(new User
             {
@@ -154,7 +156,7 @@
             {
                 this.context.Sizes.Add(new Size
                 {
-                     Value = i
+                    Value = i
                 });
             }
 
@@ -254,9 +256,9 @@
             {
                 "http://images.sportsdirect.com/images/imgzoom/67/67128002_xxl.jpg",
                 "http://images.sportsdirect.com/images/imgzoom/34/34706203_xxl.jpg",
-                "http://i.ebayimg.com/00/s/NDMyWDIzNw==/z/FjcAAOxyRhBSyJGE/$_35.JPG?set_id=2",
+                "  https://s-media-cache-ak0.pinimg.com/236x/63/90/91/639091c932c2f5a950f4d01aaed1e0be.jpg",
                 "https://s-media-cache-ak0.pinimg.com/236x/fa/2c/c6/fa2cc662e642adc1ac34142406fbd368.jpg",
-                "https://s-media-cache-ak0.pinimg.com/236x/63/90/91/639091c932c2f5a950f4d01aaed1e0be.jpg"
+                "http://i.ebayimg.com/00/s/NDMyWDIzNw==/z/FjcAAOxyRhBSyJGE/$_35.JPG?set_id=2"
             };
             for (int i = 0; i < 5; i++)
             {
@@ -317,8 +319,53 @@
                 {
                     products[i].Likes.Add(new Like()
                     {
-                        IsLiked = true,
                         User = users[j]
+                    });
+                }
+            }
+
+            this.context.SaveChanges();
+        }
+
+        private void AddComments()
+        {
+            var users = this.context.Users.ToList();
+            var products = this.context.Products.ToList();
+            var rand = new Random();
+
+            var comments = new List<string>()
+            {
+                "I removed my votes from this idea to recover them and spend them elsewhere. I think it would be appropriate to close this one as 'declined' or something equivalent.In the meanwhile, I moved to Unity for my hobbyist game development activities.",
+                "I think Monogame is doing a great job on keeping XNA alive.",
+                "Microsoft please open source XNA or close this.",
+                "Move on to Unity3D already, game over. XNA has long been dead.",
+                "Agreed, we were let down by MS and their XNA product with the release of Windows 8. Please, let's not do that to ourselves again. It was very frustrating to learn an entire platform just to have it abandoned as such.Everyone has since moved on to Unity.I suggest you do the same.",
+                "Microsoft, just close this thread as 'Declined' and be done with it please. It's ridiculous that XNA has been dead for many years now, with a number of superior replacements, and yet, this suggestion is allowed to sit here and fester.",
+                "They won't release a new version of this, as they can't even make the real next version of VB6! Especially that shall be a piece of cake for them because they already have VBA7 which with some small modifications can be made into VB6.5, or whatever you name it.",
+                "Microsoft seriously has continuity issues, from developer APIs to their own apps and products, if it doesn't work out they quit, even if it does work and has users, they change the product and release something to replace it which is half baked. Xbox and Windows phone may be the only exceptions, though it does seem like they've given up on Windows phone given how buggy Windows 10 mobile is.",
+                "I'm still rooting for this",
+                "have you seen FNA at GitHub?",
+                "I doubt Microsoft will continue working on XNA, so I just wish they would open-source it to allow MonoGame to replace its buggier code (e.g. gesture processing) and fill in the missing pieces (audio formats, dynamic sound, vibrate intensity, etc.)...",
+                "Or at least make MonoGame part of Visual Studio!",
+                "No XNA for Visual Studio/Windows 10? Microsoft products . . . stand up for yourself!",
+                "Nurture us XNA developers and let us make great games just for Windows Store! In the meantime, Ill continue with WP 7.1 with xna.",
+                "long life to xna!!! i cant undestand why microsoft stoppet xna, it so easy fun to program usin xna",
+                "While I stand by my previous comments... I'd still like to see MS get behind XNA 5. I also just purchased RB Whitaker's \"The C# Player's Guide (2nd Edition) \" whom also has some great XNA tuts @ http://rbwhitaker.wikidot.com/xna-tutorials",
+                "Yes, please give us XNA back. I love it. It's great and simple to learn",
+                "Just a thought. I heard that xna was too good and larger game developers had an issue with such a competitive tool being available to everyone. Maybe MS got some pressure to stop supporting XNA?",
+                "Monogame works fine. Microsoft has already put their support behind monogame as the alternative to xna. I WANT an official xna 5 as well but it will not happen. At best, Microsoft will officially take over Monogame and rebrand it xna 5, but even that is very unlikely.",
+                "XNA5 !!!"
+            };
+
+            for (int i = 0; i < users.Count; i++)
+            {
+                for (int j = 0; j < products.Count; j++)
+                {
+                    products[j].Comments.Add(new Comment
+                    {
+                        User = users[i],
+                        Content = comments[rand.Next(0, comments.Count)],
+                        CreatedOn = DateTime.Now.AddDays(rand.Next(-100, 0))
                     });
                 }
             }

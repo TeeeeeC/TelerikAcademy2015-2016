@@ -4,6 +4,11 @@
 
     using Infrastructure.Mapping;
     using Data.Models;
+    using Comment;
+    using Like;
+    using Menu.Category;
+    using Menu.Brand;
+    using Sport;
 
     public class ProductViewModel : IMapFrom<Product>
     {
@@ -17,18 +22,22 @@
 
         public decimal Price { get; set; }
 
-        public Category Category { get; set; }
+        public CategoryViewModel Category { get; set; }
 
-        public SubCategory SubCategory { get; set; }
+        public SubCategoryViewModel SubCategory { get; set; }
 
-        public Brand Brand { get; set; }
+        public BrandViewModel Brand { get; set; }
 
-        public Sport Sport { get; set; }
+        public SportViewModel Sport { get; set; }
 
-        public ICollection<Like> Likes { get; set; }
+        public string SizeValues { get; set; }
 
-        public ICollection<Size> Sizes { get; set; }
+        public int Quantity { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
+        public ICollection<LikeViewModel> Likes { get; set; }
+
+        public ICollection<SizeViewModel> Sizes { get; set; }
+       
+        public ICollection<CommentViewModel> Comments { get; set; }
     }
 }

@@ -61,7 +61,9 @@
     <Compile Include="Category.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Like.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="ShoppingCart.cs" />
     <Compile Include="Size.cs" />
     <Compile Include="Sport.cs" />
     <Compile Include="SubCategory.cs" />

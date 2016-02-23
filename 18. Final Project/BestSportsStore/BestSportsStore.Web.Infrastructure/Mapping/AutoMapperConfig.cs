@@ -18,6 +18,7 @@
                 {
                     var types = assembly.GetExportedTypes();
                     LoadStandardMappings(types, cfg);
+                    LoadReverseMappings(types, cfg);
                     LoadCustomMappings(types, cfg);
                 });
         }
@@ -33,6 +34,25 @@
                         {
                             Source = i.GetGenericArguments()[0],
                             Destination = t
+                        }).ToArray();
+
+            foreach (var map in maps)
+            {
+                mapperConfiguration.CreateMap(map.Source, map.Destination);
+            }
+        }
+
+        private static void LoadReverseMappings(IEnumerable<Type> types, IMapperConfiguration mapperConfiguration)
+        {
+            var maps = (from t in types
+                        from i in t.GetInterfaces()
+                        where i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapFrom<>) &&
+                              !t.IsAbstract &&
+                              !t.IsInterface
+                        select new
+                        {
+                            Destination = i.GetGenericArguments()[0],
+                            Source = t
                         }).ToArray();
 
             foreach (var map in maps)

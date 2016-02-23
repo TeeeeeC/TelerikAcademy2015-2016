@@ -1,7 +1,5 @@
 namespace BestSportsStore.Data.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -12,7 +10,7 @@ namespace BestSportsStore.Data.Migrations
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
-            this.AutomaticMigrationDataLossAllowed = true;
+            this.AutomaticMigrationDataLossAllowed = false;
             this.data = new SeedData();
         }
 

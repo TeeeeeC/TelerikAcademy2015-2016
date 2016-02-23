@@ -4,7 +4,6 @@
     using System.Data.Entity;
 
     using Models;
-    using Migrations;
 
     public class BestSportsStoreDbContext : IdentityDbContext<User>, IBestSportsStoreDbContext
     {
@@ -28,6 +27,10 @@
         public virtual IDbSet<Size> Sizes { get; set; }
 
         public virtual IDbSet<Sport> Sports { get; set; }
+
+        public virtual IDbSet<ShoppingCart> ShoppingCarts { get; set; }
+
+        public virtual IDbSet<Order> Orders { get; set; }
 
         public static BestSportsStoreDbContext Create()
         {

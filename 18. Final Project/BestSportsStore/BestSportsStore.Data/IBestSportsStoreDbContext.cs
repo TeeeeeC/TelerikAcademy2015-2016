@@ -27,6 +27,10 @@
 
         IDbSet<Sport> Sports { get; }
 
+        IDbSet<ShoppingCart> ShoppingCarts { get; }
+
+        IDbSet<Order> Orders { get; }
+
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;

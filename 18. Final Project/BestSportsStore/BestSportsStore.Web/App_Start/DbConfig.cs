@@ -9,7 +9,6 @@
         public static void Initialize()
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<BestSportsStoreDbContext, Configuration>());
-            BestSportsStoreDbContext.Create().Database.Initialize(true);
         }
     }
 }

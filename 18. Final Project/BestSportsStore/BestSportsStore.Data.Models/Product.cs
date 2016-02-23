@@ -9,12 +9,14 @@
         private ICollection<Like> likes;
         private ICollection<Comment> comments;
         private ICollection<Size> sizes;
+        private ICollection<Order> orders;
 
         public Product()
         {
             this.likes = new HashSet<Like>();
             this.comments = new HashSet<Comment>();
             this.sizes = new HashSet<Size>();
+            this.orders = new HashSet<Order>();
         }
 
         [Key]
@@ -52,6 +54,7 @@
         [ForeignKey("SportId")]
         public virtual Sport Sport { get; set; }
 
+
         public virtual ICollection<Like> Likes
         {
             get { return this.likes; }
@@ -68,6 +71,12 @@
         {
             get { return this.sizes; }
             set { this.sizes = value; }
+        }
+
+        public virtual ICollection<Order> Orders
+        {
+            get { return this.orders; }
+            set { this.orders = value; }
         }
     }
 }

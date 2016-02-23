@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BestSportsStore.Web</RootNamespace>
     <AssemblyName>BestSportsStore.Web</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -196,22 +196,43 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\BaseAdminController.cs" />
+    <Compile Include="Areas\Administration\Controllers\BrandsController.cs" />
+    <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Administration\Controllers\SizesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\SportsController.cs" />
+    <Compile Include="Areas\Administration\Models\ProductGridViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BrandsController.cs" />
+    <Compile Include="Controllers\BuyController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LikesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MensController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SportsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Account\ManageViewModels.cs" />
+    <Compile Include="Models\Comment\CommentViewModel.cs" />
+    <Compile Include="Models\Like\LikeViewModel.cs" />
     <Compile Include="Models\Menu\Brand\BrandViewModel.cs" />
     <Compile Include="Models\Menu\Category\CategoryViewModel.cs" />
     <Compile Include="Models\Menu\Category\SubCategoryViewModel.cs" />
     <Compile Include="Models\Menu\MenuViewModel.cs" />
+    <Compile Include="Models\Orders\OrderViewModel.cs" />
+    <Compile Include="Models\Product\PaginationViewModel.cs" />
     <Compile Include="Models\Product\ProductViewModel.cs" />
     <Compile Include="Models\Menu\Sport\SportViewModel.cs" />
+    <Compile Include="Models\Product\SearchViewModel.cs" />
+    <Compile Include="Models\Product\SizeViewModel.cs" />
+    <Compile Include="Models\Buy\ShoppingCartViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -220,12 +241,27 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\kendo\kendo.bootstrap.min.css" />
     <Content Include="Content\kendo\kendo.common-bootstrap.min.css" />
+    <Content Include="Content\kendo\Bootstrap\loading-image.gif" />
+    <Content Include="Content\kendo\Bootstrap\sprite.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\SubCategories.cshtml" />
+    <Content Include="Areas\Administration\Views\Sizes\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Brands\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Sports\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\BrandsDropDown.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\SportsDropDown.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\SubCategoriesDropDown.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\CategoriesDropDown.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -276,12 +312,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Mens\Index.cshtml" />
-    <Content Include="Views\Shared\_NavBar.cshtml" />
-    <Content Include="Views\Shared\_SubCategory.cshtml" />
+    <Content Include="Views\Shared\_NavigationPartial.cshtml" />
+    <Content Include="Views\Shared\_ProductsPartial.cshtml" />
+    <Content Include="Views\Shared\_SearchPartial.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Shared\_ShoppingCart.cshtml" />
+    <Content Include="Views\Buy\Order.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Shared\_CommentForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Administration\Views\BaseAdmin\" />
     <Folder Include="Library\" />
+    <Folder Include="Views\Comments\" />
+    <Folder Include="Views\Likes\" />
+    <Folder Include="Views\Shared\EditorTemplate\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

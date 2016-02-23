@@ -1,4 +1,5 @@
 ﻿@using BestSportsStore.Web.Models.Product
+@using Microsoft.AspNet.Identity
 
 @model IEnumerable<ProductViewModel>
 
@@ -13,11 +14,20 @@
 @foreach (var product in Model)
 {
     <div class="row text-center" style="width:50%; margin-left: 23%; margin-bottom: 40px;">
-        <h2>@product.Title</h2>
+        <h2>@Html.ActionLink(product.Title, "Details", "Products", new { id = product.Id }, null)</h2>
         <div class="col-md-3" style="padding-top: 50px">
-            <button class="glyphicon glyphicon-thumbs-up btn btn-primary" style="width: 100px; height: 60px;">
-                <strong style="font-size: 20px;">@product.Likes.Count</strong>
-            </button>
+            @if (!product.Likes.Select(l => l.UserId).Contains(this.User.Identity.GetUserId()))
+            {
+                @Html.ActionLink(product.Likes.Count.ToString(), "Like", "Likes", new
+            { productId = product.Id, url = Request.Url },
+                        new { @class = "glyphicon glyphicon-thumbs-up btn btn-primary", style = "width: 100px; height: 40px;font-size: 20px;" })
+            }
+            else
+            {
+                <button class="glyphicon glyphicon-thumbs-up btn btn-default" style="width: 100px; height: 40px;font-size: 20px; color: forestgreen">
+                    @product.Likes.Count.ToString()
+                </button>
+            }
         </div>
         <div class="col-md-6">
             <img src="@product.ImageUrl" />

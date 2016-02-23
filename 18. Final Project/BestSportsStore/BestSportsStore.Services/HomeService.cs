@@ -1,6 +1,5 @@
 ﻿namespace BestSportsStore.Services
 {
-    using System;
     using System.Linq;
     using Contracts;
     using Data.Models;
