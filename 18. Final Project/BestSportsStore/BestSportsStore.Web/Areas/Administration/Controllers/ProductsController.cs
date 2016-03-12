@@ -3,14 +3,13 @@
     using Data.Models;
     using Data.Repositories;
     using Infrastructure.Mapping;
-    using Kendo.Mvc.Extensions;
-    using Kendo.Mvc.UI;
     using Models;
+    using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
-    using Web.Models.Menu.Brand;
     using Web.Models.Menu.Category;
-    using Web.Models.Sport;
+    using Web.Models.Product;
 
     public class ProductsController : BaseAdminController
     {
@@ -30,75 +29,75 @@
             this.subCategories = subCategories;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            ViewData["brands"] = this.brands.All().To<BrandViewModel>().ToList();
-            ViewData["sports"] = this.sports.All().To<SportViewModel>().ToList();
-            ViewData["categories"] = this.categories.All().To<CategoryViewModel>().ToList();
-            ViewData["subCategories"] = this.subCategories.All().To<SubCategoryViewModel>().ToList();
+            var pagesCount = this.products.All().Count();
+            var viewModel = new ProductGridViewModel
+            {
+                CurrentPage = page,
+                PagesCount = (int)Math.Ceiling(pagesCount / (decimal)PageSize),
+                Products = this.products.All().To<ProductViewModel>().OrderBy(p => p.Price).Skip((page - 1) * PageSize).Take(PageSize).ToList()
+            };
 
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            ViewData["categories"] = this.categories.All().Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }).ToList();
+            ViewData["subCategories"] = this.subCategories.All().Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }).ToList();
+            ViewData["brands"] = this.brands.All().Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }).ToList();
+            ViewData["sports"] = this.sports.All().Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }).ToList();
             return View();
         }
 
-        public JsonResult Read([DataSourceRequest] DataSourceRequest request)
-        {
-            var products = this.products
-               .All().To<ProductGridViewModel>();
-
-            return Json(products.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult Update([DataSourceRequest] DataSourceRequest request, ProductGridViewModel product)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ProductViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var productEntry = this.products.GetById(product.Id);
-                productEntry.Title = product.Title;
-                productEntry.Content = product.Content;
-                productEntry.Price = product.Price;
-                productEntry.ImageUrl = product.ImageUrl;
-                productEntry.BrandId = product.Brand.Id;
-                productEntry.CategoryId = product.Category.Id;
-                productEntry.SportId = product.Sport.Id;
-                productEntry.SubCategoryId = product.SubCategory.Id;
-
-                this.products.Update(productEntry);
+                var productDb = this.Mapper.Map<Product>(model);
+                this.products.Add(productDb);
                 this.products.SaveChanges();
             }
 
-            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
+            return RedirectToAction("Index");
         }
 
-        public JsonResult Create([DataSourceRequest] DataSourceRequest request, ProductGridViewModel product)
+        [HttpGet]
+        public ActionResult Update(int productId)
+        {
+            var viewModel = this.products.All().To<ProductViewModel>().FirstOrDefault(p => p.Id == productId);
+            ViewData["categories"] = this.categories.All().Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }).ToList();
+            ViewData["subCategories"] = this.subCategories.All().Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }).ToList();
+            ViewData["brands"] = this.brands.All().Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }).ToList();
+            ViewData["sports"] = this.sports.All().Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }).ToList();
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(ProductViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var productToAdd = new Product()
-                {
-                    Title = product.Title,
-                    Content = product.Content,
-                    Price = product.Price,
-                    ImageUrl = product.ImageUrl,
-                    BrandId = product.Brand.Id,
-                    CategoryId = product.Category.Id,
-                    SportId = product.Sport.Id,
-                    SubCategoryId = product.SubCategory.Id
-                };
-
-                this.products.Add(productToAdd);
+                var productDb = this.Mapper.Map<Product>(model);
+                this.products.Update(productDb);
                 this.products.SaveChanges();
             }
 
-            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
+            return RedirectToAction("Index");
         }
 
-        public JsonResult Destroy([DataSourceRequest] DataSourceRequest request, ProductGridViewModel product)
+        public ActionResult Delete(int productId, string url)
         {
-            var productEntry = this.products.All().FirstOrDefault(p => p.Id == product.Id);
-            this.products.Delete(productEntry);
+            this.products.Delete(productId);
             this.products.SaveChanges();
 
-            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
+            return Redirect(url);
         }
     }
 }

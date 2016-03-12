@@ -3,11 +3,10 @@
     using Data.Models;
     using Data.Repositories;
     using Infrastructure.Mapping;
-    using Kendo.Mvc.Extensions;
-    using Kendo.Mvc.UI;
     using System.Linq;
     using System.Web.Mvc;
     using Web.Models.Menu.Brand;
+
 
     public class BrandsController : BaseAdminController
     {
@@ -20,62 +19,64 @@
 
         public ActionResult Index()
         {
+            var viewModel = this.brands.All().To<BrandViewModel>().ToList();
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
             return View();
         }
 
-        public JsonResult Read([DataSourceRequest] DataSourceRequest request)
-        {
-            var brands = this.brands
-               .All().To<BrandViewModel>();
-
-            return Json(brands.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult Update([DataSourceRequest] DataSourceRequest request, BrandViewModel brand)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(BrandViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var brandEntry = this.brands.All().FirstOrDefault(b => b.Id == brand.Id);
-                brandEntry.Name = brand.Name;
-                brandEntry.ImageUrl = brand.ImageUrl;
-                this.brands.Update(brandEntry);
+                var brandDb = this.Mapper.Map<Brand>(model);
+                this.brands.Add(brandDb);
                 this.brands.SaveChanges();
 
                 this.HttpContext.Cache.Remove("menu");
             }
 
-            return Json(new[] { brand }.ToDataSourceResult(request, ModelState));
+            return RedirectToAction("Index");
         }
 
-        public JsonResult Create([DataSourceRequest] DataSourceRequest request, BrandViewModel brand)
+        [HttpGet]
+        public ActionResult Update(int brandId)
+        {
+            var viewModel = this.brands.All().To<BrandViewModel>().FirstOrDefault(b => b.Id == brandId);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(BrandViewModel model)
         {
             if (ModelState.IsValid)
             {
-
-                var brandToAdd = new Brand
-                {
-                    Name = brand.Name,
-                    ImageUrl = brand.Name
-                };
-
-                this.brands.Add(brandToAdd);
+                var brandDb = this.Mapper.Map<Brand>(model);
+                this.brands.Update(brandDb);
                 this.brands.SaveChanges();
 
                 this.HttpContext.Cache.Remove("menu");
             }
 
-            return Json(new[] { brand }.ToDataSourceResult(request, ModelState));
+            return RedirectToAction("Index");
         }
 
-        public JsonResult Destroy([DataSourceRequest] DataSourceRequest request, BrandViewModel brand)
+        public ActionResult Delete(int brandId, string url)
         {
-            var brandEntry = this.brands.All().FirstOrDefault(b => b.Id == brand.Id);
-            this.brands.Delete(brandEntry);
+            this.brands.Delete(brandId);
             this.brands.SaveChanges();
 
             this.HttpContext.Cache.Remove("menu");
 
-            return Json(new[] { brand }.ToDataSourceResult(request, ModelState));
+            return Redirect(url);
         }
     }
 }

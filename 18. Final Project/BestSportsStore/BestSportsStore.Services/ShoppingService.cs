@@ -3,7 +3,7 @@
     using Contracts;
     using Data.Models;
     using Data.Repositories;
-    using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
@@ -11,13 +11,15 @@
     {
         private IRepository<ShoppingCart> shoppingCarts;
         private IRepository<Order> orders;
+        private IProductsService productService;
 
         public ShoppingService(IRepository<ShoppingCart> shoppingCarts,
-            IRepository<Product> products, IRepository<Order> orders)
+            IRepository<Product> products, IRepository<Order> orders, IProductsService productService)
             : base(products)
         {
             this.shoppingCarts = shoppingCarts;
             this.orders = orders;
+            this.productService = productService;
         }
 
         public void AddShoppingCart(int productId, int productSize, string userId)
@@ -71,9 +73,9 @@
 
         }
 
-        public void AddOrder(decimal totalPrice, string productsIds, string sizes, string userId, string userCardId, string titles)
+        public void AddOrder(decimal totalPrice, string userId, IList<Product> products, string userCartId)
         {
-            var cart = this.shoppingCarts.All().FirstOrDefault(c => c.UserId == userCardId);
+            var cart = this.shoppingCarts.All().FirstOrDefault(c => c.UserId == userCartId);
             cart.ProductIds = string.Empty;
             cart.Sizes = string.Empty;
             cart.ProductsCount = 0;
@@ -82,14 +84,30 @@
             var order = new Order
             {
                 TotalPrice = totalPrice,
-                ProductIds = productsIds,
-                ProductSizes = sizes,
-                ProductTitles = titles,
                 UserId = userId
             };
 
             this.orders.Add(order);
             this.orders.SaveChanges();
+
+            var productsDb = this.productService.GetByIds(products.Select(p => p.Id).ToList()).ToList();
+
+            for (int i = 0; i < products.Count; i++)
+            {
+                order.Products.Add(productsDb[i]);
+            }
+
+            this.orders.SaveChanges();
+        }
+
+        public void DeleteItemFromShoppingCart(int productId, int productSize, string userCartId)
+        {
+            var cart = this.shoppingCarts.All().FirstOrDefault(c => c.UserId == userCartId);
+            cart.ProductIds = cart.ProductIds.Replace(productId.ToString() + ",", string.Empty);
+            cart.Sizes = cart.Sizes.Replace(productSize.ToString() + ",", string.Empty);
+            cart.ProductsCount -= 1;
+
+            this.shoppingCarts.SaveChanges();
         }
     }
 }

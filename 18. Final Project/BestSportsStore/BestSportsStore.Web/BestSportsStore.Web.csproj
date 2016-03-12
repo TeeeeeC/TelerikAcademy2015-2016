@@ -203,7 +203,9 @@
     <Compile Include="Areas\Administration\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Administration\Controllers\SizesController.cs" />
     <Compile Include="Areas\Administration\Controllers\SportsController.cs" />
+    <Compile Include="Areas\Administration\Controllers\SubCategoriesController.cs" />
     <Compile Include="Areas\Administration\Models\ProductGridViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\SizeGridViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BrandsController.cs" />
@@ -239,10 +241,6 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\kendo\kendo.bootstrap.min.css" />
-    <Content Include="Content\kendo\kendo.common-bootstrap.min.css" />
-    <Content Include="Content\kendo\Bootstrap\loading-image.gif" />
-    <Content Include="Content\kendo\Bootstrap\sprite.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -253,15 +251,23 @@
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\Categories\SubCategories.cshtml" />
     <Content Include="Areas\Administration\Views\Sizes\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Brands\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Sports\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Products\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\BrandsDropDown.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\SportsDropDown.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\SubCategoriesDropDown.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\CategoriesDropDown.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Update.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\SubCategories\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\SubCategories\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\SubCategories\Update.cshtml" />
+    <Content Include="Areas\Administration\Views\Sizes\Update.cshtml" />
+    <Content Include="Areas\Administration\Views\Sizes\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Brands\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Brands\Update.cshtml" />
+    <Content Include="Areas\Administration\Views\Sports\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Sports\Update.cshtml" />
+    <Content Include="Areas\Administration\Views\Products\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Products\Update.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -270,8 +276,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\kendo\kendo.all.min.js" />
-    <Content Include="Scripts\kendo\kendo.aspnetmvc.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -319,12 +323,11 @@
     <Content Include="Views\Shared\_ShoppingCart.cshtml" />
     <Content Include="Views\Buy\Order.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
-    <Content Include="Views\Shared\_CommentForm.cshtml" />
+    <Content Include="Views\Comments\CreateComment.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Views\BaseAdmin\" />
-    <Folder Include="Library\" />
-    <Folder Include="Views\Comments\" />
     <Folder Include="Views\Likes\" />
     <Folder Include="Views\Shared\EditorTemplate\" />
   </ItemGroup>
@@ -389,6 +392,12 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+      if not exist "$(WebProjectOutputDir)\bin\Roslyn" md "$(WebProjectOutputDir)\bin\Roslyn"
+      start /MIN xcopy /s /y /R "$(OutDir)roslyn\*.*" "$(WebProjectOutputDir)\bin\Roslyn"
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -3,11 +3,10 @@
     using Data.Models;
     using Data.Repositories;
     using Infrastructure.Mapping;
-    using Kendo.Mvc.Extensions;
-    using Kendo.Mvc.UI;
-    using Web.Models.Menu.Category;
+    using Models;
     using System.Linq;
     using System.Web.Mvc;
+    using Web.Models.Menu.Category;
 
     public class CategoriesController : BaseAdminController
     {
@@ -22,139 +21,81 @@
 
         public ActionResult Index()
         {
+            var viewModel = this.categories.All().To<CategoryViewModel>().ToList();
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            var subCategories = this.subCategories.All().Select(s => s.Name).ToList();
+            ViewData["subCategories"] = subCategories;
+
             return View();
         }
 
-        public JsonResult Read([DataSourceRequest] DataSourceRequest request)
-        {
-            var categories = this.categories
-               .All().To<CategoryViewModel>();
-
-            return Json(categories.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult Update([DataSourceRequest] DataSourceRequest request, CategoryViewModel category)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CategoryViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var categoryEntry = this.categories.All().FirstOrDefault(c => c.Id == category.Id);
-                categoryEntry.Name = category.Name;
-                this.categories.Update(categoryEntry);
+                var categoryDb = this.Mapper.Map<Category>(model);
+                this.categories.Add(categoryDb);
                 this.categories.SaveChanges();
 
-                this.HttpContext.Cache.Remove("menu");
-            }
-
-            return Json(new[] { category }.ToDataSourceResult(request, ModelState));
-        }
-
-        public JsonResult Create([DataSourceRequest] DataSourceRequest request, CategoryViewModel category)
-        {
-            if (ModelState.IsValid)
-            {
-
-                var categorytoadd = new Category
+                if(model.SubCategoryNames != null && model.SubCategoryNames.Count > 0)
                 {
-                    Name = category.Name
-                };
-
-                this.categories.Add(categorytoadd);
-
-                this.categories.SaveChanges();
-
-                var subCategories = this.subCategories.All().ToList();
-                for (int i = 0; i < subCategories.Count; i++)
-                {
-                    subCategories[i].Categories.Add(categorytoadd);
+                    var subCategories = this.subCategories.All().ToList();
+                    foreach (var subCategory in subCategories)
+                    {
+                        if (model.SubCategoryNames.Contains(subCategory.Name))
+                        {
+                            categoryDb.SubCategories.Add(subCategory);
+                        }
+                    }
                 }
 
-                this.subCategories.SaveChanges();
+                this.categories.SaveChanges();
 
                 this.HttpContext.Cache.Remove("menu");
             }
 
-            return Json(new[] { category }.ToDataSourceResult(request, ModelState));
+            return RedirectToAction("Index");
         }
 
-        public JsonResult Destroy([DataSourceRequest] DataSourceRequest request, CategoryViewModel category)
+        [HttpGet]
+        public ActionResult Update(int categoryId)
         {
-            var categoryEntry = this.categories.All().FirstOrDefault(c => c.Id == category.Id);
-            this.categories.Delete(categoryEntry);
+            var viewModel = this.categories.All().To<CategoryViewModel>().FirstOrDefault(c => c.Id == categoryId);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(CategoryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var categoryDb = this.Mapper.Map<Category>(model);
+                this.categories.Update(categoryDb);
+                this.categories.SaveChanges();
+
+                this.HttpContext.Cache.Remove("menu");
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int categoryId, string url)
+        {
+            this.categories.Delete(categoryId);
             this.categories.SaveChanges();
 
             this.HttpContext.Cache.Remove("menu");
 
-            return Json(new[] { category }.ToDataSourceResult(request, ModelState));
+            return Redirect(url);
         }
-
-        // SubCategories footwear, clothing, accessories
-
-        public ActionResult SubCategories()
-        {
-            return View();
-        }
-
-        public JsonResult ReadSubCategories([DataSourceRequest] DataSourceRequest request)
-        {
-            var subCategories = this.subCategories
-               .All().To<SubCategoryViewModel>();
-
-            return Json(subCategories.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult UpdateSubCategories([DataSourceRequest] DataSourceRequest request, SubCategoryViewModel subCategory)
-        {
-            if (subCategory != null && ModelState.IsValid)
-            {
-                var subCategoryEntry = this.subCategories.All().FirstOrDefault(s => s.Id == subCategory.Id);
-                subCategoryEntry.Name = subCategory.Name;
-                this.subCategories.Update(subCategoryEntry);
-                this.subCategories.SaveChanges();
-
-                this.HttpContext.Cache.Remove("menu");
-            }
-
-            return Json(new[] { subCategory }.ToDataSourceResult(request, ModelState));
-        }
-
-        public JsonResult CreateSubCategories([DataSourceRequest] DataSourceRequest request, SubCategoryViewModel subCategory)
-        {
-            if (subCategory != null && ModelState.IsValid)
-            {
-                var subCategoryToAdd = new SubCategory
-                {
-                    Name = subCategory.Name
-                };
-
-                this.subCategories.Add(subCategoryToAdd);
-
-                this.subCategories.SaveChanges();
-
-                var categories = this.categories.All().ToList();
-                for (int i = 0; i < categories.Count; i++)
-                {
-                    categories[i].SubCategories.Add(subCategoryToAdd);
-                }
-
-                this.categories.SaveChanges();
-
-                this.HttpContext.Cache.Remove("menu");
-            }
-
-            return Json(new[] { subCategory }.ToDataSourceResult(request, ModelState));
-        }
-
-
-        public JsonResult DestroySubCategories([DataSourceRequest] DataSourceRequest request, SubCategoryViewModel subCategory)
-        {
-            var subCategoryEntry = this.subCategories.All().FirstOrDefault(s => s.Id == subCategory.Id);
-            this.subCategories.Delete(subCategoryEntry);
-            this.subCategories.SaveChanges();
-
-            this.HttpContext.Cache.Remove("menu");
-
-            return Json(new[] { subCategory }.ToDataSourceResult(request, ModelState));
-        }
-
     }
 }

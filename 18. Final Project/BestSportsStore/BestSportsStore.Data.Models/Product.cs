@@ -54,7 +54,6 @@
         [ForeignKey("SportId")]
         public virtual Sport Sport { get; set; }
 
-
         public virtual ICollection<Like> Likes
         {
             get { return this.likes; }

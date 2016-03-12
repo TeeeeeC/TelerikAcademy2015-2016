@@ -53,7 +53,7 @@
 
 @if(Request.IsAuthenticated)
 {
-   <div>@Html.Action("Index", "Comments", new { productId = Model.Id})</div> 
+   <div style="margin-top: 50px;">@Html.Action("CreateComment", "Comments", new { productId = Model.Id })</div> 
 }
 
 <h3>Comments</h3>
@@ -61,7 +61,13 @@
 @foreach (var comment in Model.Comments)
 {
     <div class="row">
-       <h3>@comment.User.UserName commented... on @comment.CreatedOn.ToLongDateString()</h3>
-       <p>@comment.Content</p>
+        <p><strong style="color: darkorchid; font-size:large">@comment.User.UserName</strong> commented... on <i style="color:gray">@comment.CreatedOn.ToLongDateString()</i></p>
+        <p style="color: cadetblue">@comment.Content</p>
     </div>
+}
+
+@section Footer {
+    <footer class="text-center">
+        <p>&copy; @DateTime.Now.Year - Sports Store</p>
+    </footer>
 }

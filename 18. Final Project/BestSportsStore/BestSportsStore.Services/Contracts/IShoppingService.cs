@@ -1,7 +1,7 @@
 ﻿namespace BestSportsStore.Services.Contracts
 {
     using BestSportsStore.Data.Models;
-
+    using System.Collections.Generic;
     public interface IShoppingService
     {
         ShoppingCart GetByUserId(string userId);
@@ -12,8 +12,8 @@
 
         void OrderProductBySize(int productId, int sizeId);
 
-        void AddOrder(decimal totalPrice, string productsIds, string sizes, string userId, string userCardId, string titles);
+        void AddOrder(decimal totalPrice, string userId, IList<Product> products, string userCardId);
 
-        //void DeleteItemFromShoppingCart(int productId, int productSize, string userId);
+        void DeleteItemFromShoppingCart(int productId, int productSize, string userCartId);
     }
 }

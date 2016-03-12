@@ -20,8 +20,15 @@
 
         public ActionResult Index()
         {
-            var userId = this.HttpContext.User.Identity.GetUserId();
-            var viewModel = this.ordersService.GetByUserId(userId).To<OrderViewModel>().ToList(); 
+            var viewModel = this.ordersService.GetByUserId(this.CurrentUserId).To<OrderViewModel>().ToList(); 
+
+            return View(viewModel);
+        }
+
+        public ActionResult Details()
+        {
+            var orderId = int.Parse(Request.Url.Segments[Request.Url.Segments.Count() - 1]);
+            var viewModel = this.ordersService.GetByUserId(this.CurrentUserId).To<OrderViewModel>().FirstOrDefault(o => o.Id == orderId);
 
             return View(viewModel);
         }

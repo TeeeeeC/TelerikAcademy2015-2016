@@ -11,7 +11,7 @@
     {
         public int Id { get; set; }
        
-        [Required(ErrorMessage = "Content is Required!")]
+        [Required]
         [StringLength(500, MinimumLength = 5)]
         [AllowHtml]
         public string Content { get; set; }

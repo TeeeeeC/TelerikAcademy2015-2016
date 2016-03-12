@@ -1,41 +1,81 @@
 ﻿@using BestSportsStore.Web.Areas.Administration.Models
 
+@model ProductGridViewModel
+
 @{
     ViewBag.Title = "Index";
     const string ControllerName = "Products";
 }
 
-<h2>@ControllerName</h2>
+<div class="row text-center" style="margin-top: 30px">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">@ControllerName</h3>
+            </div>
+            <div class="panel panel-body">
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th>@Html.ActionLink("Create new product", "Create", ControllerName, new { }, new { @class = "btn btn-default" })</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Content</th>
+                        <th class="text-center">ImageUrl</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Category</th>
+                        <th class="text-center">SubCategory</th>
+                        <th class="text-center">Brand</th>
+                        <th class="text-center">Sport</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
 
-@(Html.Kendo()
-    .Grid<ProductGridViewModel>()
-    .Name("gridProducts").HtmlAttributes(new { style = "width: 100%"})
-    .Columns(cols =>
-    {
-        cols.Bound(p => p.Title);
-        cols.Bound(p => p.Content);
-        cols.Bound(p => p.Price);
-        cols.Bound(p => p.ImageUrl).Width(100);
-        cols.Bound(p => p.Brand).ClientTemplate("#=Brand.Name#");
-        cols.Bound(p => p.Category).ClientTemplate("#=Category.Name#");
-        cols.Bound(p => p.Sport).ClientTemplate("#=Sport.Name#");
-        cols.Bound(p => p.SubCategory).ClientTemplate("#=SubCategory.Name#");
-        cols.Command(com => com.Edit()).Title("Edit");
-        cols.Command(com => com.Destroy()).Title("Delete");
-    })
-    .ColumnMenu()
-    .Pageable(page => page.Refresh(true))
-    .Sortable()
-    .Editable(edit => edit.Mode(GridEditMode.InLine))
-    .ToolBar(toolbar => toolbar.Create().Text("Add new product"))
-    .DataSource(data =>
-        data
-            .Ajax()
-            .Model(m =>
-            {
-                m.Id(p => p.Id);
-            })
-            .Read(read => read.Action("Read", ControllerName))
-            .Create(create => create.Action("Create", ControllerName))
-            .Update(update => update.Action("Update", ControllerName))
-            .Destroy(destroy => destroy.Action("Destroy", ControllerName))))
+                    @foreach (var product in Model.Products)
+                    {
+                        <tr>
+                            <td>@product.Title</td>
+                            <td>@product.Content</td>
+                            <td><img src="@product.ImageUrl" /></td>
+                            <td>@product.Price</td>
+                            <td>@product.Category.Name</td>
+                            <td>@product.SubCategory.Name</td>
+                            <td>@product.Brand.Name</td>
+                            <td>@product.Sport.Name</td>
+                            <td>@Html.ActionLink("Edit", "Update", ControllerName, new { productId = product.Id }, new { @class = "btn btn-default" })</td>
+                            <td>@Html.ActionLink("Delete", "Delete", ControllerName, new { productId = product.Id, url = Request.Url.PathAndQuery }, new { @class = "btn btn-default" })</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="panel panel-footer">
+                <nav class="text-center">
+                    <ul class="pagination pagination-lg">
+                        @if (Model.CurrentPage - 1 > 0)
+                        {
+                            <li>
+                                <a href="/Administration/@ControllerName/index?page=@(Model.CurrentPage - 1)" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        }
+                        @for (int i = 1; i <= Model.PagesCount; i++)
+                        {
+                            <li class="@(i == Model.CurrentPage ? "active" : string.Empty)">
+                                <a href="/Administration/@ControllerName/index?page=@i">@i</a>
+                            </li>
+                        }
+                        @if (Model.CurrentPage < Model.PagesCount)
+                        {
+                            <li>
+                                <a href="/Administration/@ControllerName/index?page=@(Model.CurrentPage + 1)" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

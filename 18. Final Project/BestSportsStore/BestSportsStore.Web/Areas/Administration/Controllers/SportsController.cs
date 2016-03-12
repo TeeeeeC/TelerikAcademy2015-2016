@@ -3,8 +3,6 @@
     using Data.Models;
     using Data.Repositories;
     using Infrastructure.Mapping;
-    using Kendo.Mvc.Extensions;
-    using Kendo.Mvc.UI;
     using Web.Models.Sport;
     using System.Linq;
     using System.Web.Mvc;
@@ -20,59 +18,64 @@
 
         public ActionResult Index()
         {
+            var viewModel = this.sports.All().To<SportViewModel>().ToList();
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
             return View();
         }
 
-        public JsonResult Read([DataSourceRequest] DataSourceRequest request)
-        {
-            var sports = this.sports
-               .All().To<SportViewModel>();
-
-            return Json(sports.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult Update([DataSourceRequest] DataSourceRequest request, SportViewModel sport)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(SportViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var sportEntry = this.sports.All().FirstOrDefault(s => s.Id == sport.Id);
-                sportEntry.Name = sport.Name;
-                this.sports.Update(sportEntry);
+                var sportDb = this.Mapper.Map<Sport>(model);
+                this.sports.Add(sportDb);
                 this.sports.SaveChanges();
 
                 this.HttpContext.Cache.Remove("menu");
             }
 
-            return Json(new[] { sport }.ToDataSourceResult(request, ModelState));
+            return RedirectToAction("Index");
         }
 
-        public JsonResult Create([DataSourceRequest] DataSourceRequest request, SportViewModel sport)
+        [HttpGet]
+        public ActionResult Update(int sportId)
+        {
+            var viewModel = this.sports.All().To<SportViewModel>().FirstOrDefault(s => s.Id == sportId);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(SportViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var sportToAdd = new Sport
-                {
-                    Name = sport.Name,
-                };
-
-                this.sports.Add(sportToAdd);
+                var sportDb = this.Mapper.Map<Sport>(model);
+                this.sports.Update(sportDb);
                 this.sports.SaveChanges();
 
                 this.HttpContext.Cache.Remove("menu");
             }
 
-            return Json(new[] { sport }.ToDataSourceResult(request, ModelState));
+            return RedirectToAction("Index");
         }
 
-        public JsonResult Destroy([DataSourceRequest] DataSourceRequest request, SportViewModel sport)
+        public ActionResult Delete(int sportId, string url)
         {
-            var sportEntry = this.sports.All().FirstOrDefault(s => s.Id == sport.Id);
-            this.sports.Delete(sportEntry);
+            this.sports.Delete(sportId);
             this.sports.SaveChanges();
 
             this.HttpContext.Cache.Remove("menu");
 
-            return Json(new[] { sport }.ToDataSourceResult(request, ModelState));
+            return Redirect(url);
         }
     }
 }

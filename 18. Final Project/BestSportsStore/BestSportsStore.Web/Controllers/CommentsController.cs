@@ -17,22 +17,20 @@
         [ValidateAntiForgeryToken]
         public ActionResult CreateComment(CommentViewModel model, string url)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var userId = this.HttpContext.User.Identity.GetUserId();
-                this.ProductsService.AddComment(model.ProductId, userId, model.Content);
+                return View(model);
             }
-            else
-            {
-                ModelState.AddModelError("Content", "Content is required!");
-            }
+
+            var userId = this.HttpContext.User.Identity.GetUserId();
+            this.ProductsService.AddComment(model.ProductId, userId, model.Content);
 
             return Redirect(url);
         }
 
-        public ActionResult Index(int productId)
+        public ActionResult CreateComment(int productId)
         {
-            return PartialView("_CommentForm", new CommentViewModel { ProductId = productId });
+            return View(new CommentViewModel { ProductId = productId });
         }
     }
 }

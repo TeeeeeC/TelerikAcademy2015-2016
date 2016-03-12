@@ -16,24 +16,22 @@
         {
         }
 
-        public ActionResult Index(string brand, int page = 1, string query = null)
+        public ActionResult Index(string brand, int page = 1, string query = null, string sortBy = SortByDefault, string sortOrder = SortOrderDefault)
         {
             brand = brand == "All" ? null : brand;
             var pagesCount = this.ProductsService.GetAllByBrand(brand, query).Count();
             var products = this.ProductsService
                  .GetAllByBrand(brand, query)
-                 .To<ProductViewModel>()
-                 .OrderBy(p => p.Title)
-                 .Skip((page - 1) * PageSize)
-                 .Take(PageSize)
-                 .ToList();
+                 .To<ProductViewModel>();
 
             var viewModel = new PaginationViewModel()
             {
                 CurrentPage = page,
-                Products = products,
+                Products = this.Sort(products, sortBy, sortOrder).Skip((page - 1) * PageSize).Take(PageSize).ToList(),
                 Brand = brand == null ? "All" : brand,
                 Query = query,
+                SortBy = sortBy,
+                SortOrder = sortOrder,
                 PagesCount = (int)Math.Ceiling(pagesCount / (decimal)PageSize)
             };
 

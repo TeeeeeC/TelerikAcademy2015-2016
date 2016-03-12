@@ -1,5 +1,6 @@
 ﻿namespace BestSportsStore.Web.Controllers
 {
+    using Data.Models;
     using Microsoft.AspNet.Identity;
     using Models.Orders;
     using Models.Product;
@@ -12,7 +13,7 @@
 
     public class BuyController : BaseController
     {
-        private const string UserIdCard = "userIdCard";
+        private const string UserIdCart = "userIdCard";
 
         private IShoppingService shoppingService;
 
@@ -24,17 +25,17 @@
 
         public ActionResult Index(int productId, int productSize, string url)
         {
-            if (Request.Cookies[UserIdCard] == null)
+            if (Request.Cookies[UserIdCart] == null)
             {
                 var guid = Guid.NewGuid().ToString();
                 this.shoppingService.AddShoppingCart(productId, productSize, guid);
-                this.Response.Cookies[UserIdCard].Value = guid;
-                this.Response.Cookies[UserIdCard].Expires = DateTime.Now.AddDays(3);
+                this.Response.Cookies[UserIdCart].Value = guid;
+                this.Response.Cookies[UserIdCart].Expires = DateTime.Now.AddDays(3);
             }
             else
             {
-                var userId = this.Request.Cookies[UserIdCard].Value;
-                this.shoppingService.UpdateShoppingCart(productId, productSize, userId);
+                var cardId = this.Request.Cookies[UserIdCart].Value;
+                this.shoppingService.UpdateShoppingCart(productId, productSize, cardId);
             }
 
             return Redirect(url);
@@ -43,9 +44,9 @@
         public ActionResult ShoppingCart()
         {
             ShoppingCartViewModel cart;
-            if (Request.Cookies[UserIdCard] != null)
+            if (Request.Cookies[UserIdCart] != null)
             {
-                cart = this.Mapper.Map<ShoppingCartViewModel>(this.shoppingService.GetByUserId(Request.Cookies[UserIdCard].Value));
+                cart = this.Mapper.Map<ShoppingCartViewModel>(this.shoppingService.GetByUserId(Request.Cookies[UserIdCart].Value));
             }
             else
             {
@@ -58,10 +59,10 @@
         [HttpGet]
         public ActionResult Order()
         {
-            OrderViewModel viewModel = new OrderViewModel { ProductIds = null };
-            if (this.Request.Cookies[UserIdCard] != null)
+            var viewModel = new OrderViewModel();
+            if (this.Request.Cookies[UserIdCart] != null)
             {
-                var cart = this.shoppingService.GetByUserId(Request.Cookies[UserIdCard].Value);
+                var cart = this.shoppingService.GetByUserId(Request.Cookies[UserIdCart].Value);
                 if (cart.ProductsCount > 0)
                 {
                     var productsIds = cart.ProductIds.Split(new string[] { "," } ,StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
@@ -69,34 +70,20 @@
                     var products = this.Mapper.Map<List<ProductViewModel>>(productsAsQuerable);
 
                     var sizes = cart.Sizes.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
-                    var productTitles = string.Empty;
-                    for (int i = 0; i < productsIds.Count; i++)
-                    {
-                        var product = products.Find(p => p.Id == productsIds[i]);
-                        product.SizeValues += sizes[i] + ",";
-                        productTitles += product.Title + ",";
-                    }
-
                     for (int i = 0; i < products.Count; i++)
                     {
-                        var countSizes = products[i].SizeValues.Count(c => c == ',');
-                        if (countSizes > 1)
-                        {
-                            products[i].Price *= countSizes;
-                            products[i].Quantity = countSizes;
-                        }
-                        else
-                        {
-                            products[i].Quantity = 1;
-                        }
+                        products[i].Sizes.Clear();
+                    }
+
+                    for (int i = 0; i < sizes.Count; i++)
+                    {
+                        var product = products.FirstOrDefault(p => p.Id == productsIds[i]);
+                        product.Sizes.Add(new SizeViewModel { Value = (short)sizes[i] });
                     }
 
                     viewModel = new OrderViewModel
                     {
                         Products = products,
-                        ProductIds = cart.ProductIds,
-                        ProductSizes = cart.Sizes,
-                        ProductTitles = productTitles,
                         TotalPrice = products.Sum(p => p.Price)
                     };
                 }
@@ -110,20 +97,24 @@
         [ValidateAntiForgeryToken]
         public ActionResult Order(OrderViewModel model)
         {
-            var productsIds = model.ProductIds.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
-            var products = this.ProductsService.GetByIds(productsIds).ToList();
-            var sizes = model.ProductSizes.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
-            for (int i = 0; i < sizes.Count; i++)
+            for (int i = 0; i < model.Products.Count; i++)
             {
-                this.shoppingService.OrderProductBySize(products[i % products.Count].Id, sizes[i]);
+                this.shoppingService.OrderProductBySize(model.Products[i].Id, model.Products[i].Sizes.FirstOrDefault().Value);
             }
             
             this.HttpContext.Response.Cache.SetNoStore();
             var userId = this.HttpContext.User.Identity.GetUserId();
-            this.shoppingService.AddOrder(model.TotalPrice, model.ProductIds, model.ProductSizes, userId, 
-                Request.Cookies[UserIdCard].Value, model.ProductTitles);
+            this.shoppingService.AddOrder(model.TotalPrice, userId, this.Mapper.Map<List<Product>>(model.Products),
+                Request.Cookies[UserIdCart].Value);
 
             return Redirect("/orders/index");
+        }
+
+        public ActionResult RemoveFromCart(int productId, int sizeValue, string url)
+        {
+            var cartId = this.Request.Cookies[UserIdCart].Value;
+            this.shoppingService.DeleteItemFromShoppingCart(productId, sizeValue, cartId);
+            return Redirect(url);
         }
     }
 }

@@ -4,10 +4,19 @@
 @model PaginationViewModel
 
 @{
+    const string PartialViewSearch = "_SearchPartial";
     var category = string.Empty;
     var subCategory = string.Empty;
     var controller = Request.RequestContext.RouteData.Values["controller"].ToString();
     var userId = this.User.Identity.GetUserId();
+    var searchViewModel = new SearchViewModel
+    {
+        Category = Model.Category,
+        SubCategory = Model.SubCategory,
+        Brand = Model.Brand,
+        Sport = Model.Sport,
+        Query = Model.Query
+    };
 
     if (Model.Products.Count > 0)
     {
@@ -40,7 +49,30 @@
 
 @section Search
 {
-    @Html.Action("AutoCompleteData", "Products", new { category = category, subCategory = subCategory, sport = Model.Sport, brand = Model.Brand })
+    @Html.Partial(PartialViewSearch, searchViewModel)
+}
+
+@using (Html.BeginForm("Index", controller, new { category = Model.Category, subCategory = Model.SubCategory, sport = Model.Sport, brand = Model.Brand, query = Model.Query }))
+{
+    <div class="row">
+        <div class="col-md-4">
+            @Html.DropDownListFor(m => m.SortBy, new List<SelectListItem>
+            {
+                new SelectListItem { Value = "Price", Text = "Price" },
+                new SelectListItem { Value = "Likes", Selected = true, Text = "Likes" }
+            }, new { @class = "form-control" })
+        </div>
+        <div class="col-md-4">
+            @Html.DropDownListFor(m => m.SortOrder, new List<SelectListItem>()
+            {
+                new SelectListItem { Value = "Asc", Text = "Asc" },
+                new SelectListItem { Value = "Desc", Selected = true, Text = "Desc" }
+            }, new { @class = "form-control" })
+        </div>
+        <div class="col-md-4">
+            <input type="submit" value="Sort" class="btn btn-primary" />
+        </div>
+    </div>
 }
 
 @foreach (var product in Model.Products)
@@ -52,7 +84,7 @@
                 @if (!product.Likes.Any(l => l.UserId == userId))
                 {
                     @Html.ActionLink(product.Likes.Count.ToString(), "Like", "Likes", new
-                        { productId = product.Id, url = Request.Url },
+               { productId = product.Id, url = Request.Url },
                         new { @class = "glyphicon glyphicon-thumbs-up btn btn-primary", style = "width: 100px; height: 40px;font-size: 20px;" })
                 }
                 else
@@ -91,7 +123,7 @@
         @if (Model.CurrentPage - 1 > 0)
         {
             <li>
-                <a href="/@controller?category=@Model.Category&subCategory=@Model.SubCategory&sport=@Model.Sport&brand=@Model.Brand&query=@Model.Query&page=@(Model.CurrentPage - 1)" aria-label="Previous">
+                <a href="/@controller?category=@Model.Category&subCategory=@Model.SubCategory&sport=@Model.Sport&brand=@Model.Brand&query=@Model.Query&sortBy=@Model.SortBy&sortOrder=@Model.SortOrder&page=@(Model.CurrentPage - 1)" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
@@ -99,16 +131,22 @@
         @for (int i = 1; i <= Model.PagesCount; i++)
         {
             <li class="@(i == Model.CurrentPage ? "active" : string.Empty)">
-                <a href="/@controller?category=@Model.Category&subCategory=@Model.SubCategory&sport=@Model.Sport&brand=@Model.Brand&query=@Model.Query&page=@i">@i</a>
+                <a href="/@controller?category=@Model.Category&subCategory=@Model.SubCategory&sport=@Model.Sport&brand=@Model.Brand&query=@Model.Query&sortBy=@Model.SortBy&sortOrder=@Model.SortOrder&page=@i">@i</a>
             </li>
         }
         @if (Model.CurrentPage < Model.PagesCount)
         {
             <li>
-                <a href="/@controller?category=@Model.Category&subCategory=@Model.SubCategory&sport=@Model.Sport&brand=@Model.Brand&query=@Model.Query&page=@(Model.CurrentPage + 1)" aria-label="Next">
+                <a href="/@controller?category=@Model.Category&subCategory=@Model.SubCategory&sport=@Model.Sport&brand=@Model.Brand&query=@Model.Query&sortBy=@Model.SortBy&sortOrder=@Model.SortOrder&page=@(Model.CurrentPage + 1)" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
         }
     </ul>
 </nav>
+
+@section Footer {
+    <footer class="text-center">
+        <p>&copy; @DateTime.Now.Year - Sports Store</p>
+    </footer>
+}

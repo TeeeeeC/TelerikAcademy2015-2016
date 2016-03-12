@@ -3,10 +3,10 @@
 
 @{
     ViewBag.Title = "Order";
-    int counter = 0;
+    var products = (List<BestSportsStore.Web.Models.Product.ProductViewModel>)Model.Products;
 }
 
-@if (Model.ProductIds != null)
+@if (Model.Products != null)
 {
     <div class="panel-group text-center" style="margin-top: 50px;">
         <div class="panel panel-primary">
@@ -19,40 +19,50 @@
                     <div class="col-md-2">Image</div>
                     <div class="col-md-2">Title</div>
                     <div class="col-md-1">Brand</div>
-                    <div class="col-md-2">Size</div>
-                    <div class="col-md-2">Quantity</div>
                     <div class="col-md-2">Price</div>
+                    <div class="col-md-2"></div>
                 </div>
-
-                @foreach (var product in Model.Products)
+                @using (Html.BeginForm("Order", "Buy", FormMethod.Post))
                 {
+                    for (int i = 0; i < Model.Products.Count; i++)
+                    {
+                        <div class="row">
+                            <div class="col-md-1">@(i + 1)</div>
+                            <div class="col-md-2"><img src="@Model.Products[i].ImageUrl" style="width: 100px; height: 50px" /></div>
+                            <div class="col-md-2">@Model.Products[i].Title</div>
+                            <div class="col-md-1">@Model.Products[i].Brand.Name</div>
+                            <div class="col-md-2">@Model.Products[i].Price £</div>
+                            <div class="col-md-2">@Html.ActionLink("Remove", "RemoveFromCart", "Buy",  new { url = Request.Url.PathAndQuery, productId = Model.Products[i].Id, sizeValue = Model.Products[i].Sizes[0].Value }, null)</div>
+                        </div>
+
+                        @Html.HiddenFor(m => m.Products[i].Brand.Name)
+                        @Html.HiddenFor(m => m.Products[i].Brand.Id)
+                        @Html.HiddenFor(m => m.Products[i].Price)
+                        @Html.HiddenFor(m => m.Products[i].Title)
+                        @Html.HiddenFor(m => m.Products[i].Content)
+                        @Html.HiddenFor(m => m.Products[i].Id)
+                        @Html.HiddenFor(m => m.Products[i].ImageUrl)
+                        @Html.HiddenFor(m => m.Products[i].Category.Name)
+                        @Html.HiddenFor(m => m.Products[i].Category.Id)
+                        @Html.HiddenFor(m => m.Products[i].SubCategory.Name)
+                        @Html.HiddenFor(m => m.Products[i].SubCategory.Id)
+                        @Html.HiddenFor(m => m.Products[i].Sport.Name)
+                        @Html.HiddenFor(m => m.Products[i].Sport.Id)
+                        @Html.HiddenFor(m => m.Products[i].Sizes[0].Value)
+                        @Html.HiddenFor(m => m.Products[i].Sizes[0].Id)
+                    }
+
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.TotalPrice)
+
                     <div class="row">
-                        <div class="col-md-1">@(++counter)</div>
-                        <div class="col-md-2"><img src="@product.ImageUrl" style="width: 100px; height: 50px" /></div>
-                        <div class="col-md-2">@product.Title</div>
-                        <div class="col-md-1">@product.Brand.Name</div>
-                        <div class="col-md-2">@product.SizeValues</div>
-                        <div class="col-md-2">@product.Quantity</div>
-                        <div class="col-md-2">@product.Price £</div>
+                        <div class="col-md-6"></div>
+                        <div class="col-md-3"><h3>Total: @Model.TotalPrice £</h3></div>
+                        <div class="col-md-3">
+                            <button class="btn btn-danger" style="width: 100%; margin-top: 15px;">Order</button>
+                        </div>
                     </div>
                 }
-
-                <div class="row">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-3"><h3>Total: @Model.TotalPrice £</h3></div>
-                    <div class="col-md-3">
-                        @using (Html.BeginForm("Order", "Buy", FormMethod.Post))
-                        {
-                            @Html.AntiForgeryToken()
-
-                            @Html.HiddenFor(m => m.ProductSizes)
-                            @Html.HiddenFor(m => m.ProductIds)
-                            @Html.HiddenFor(m => m.ProductTitles)
-                            @Html.HiddenFor(m => m.TotalPrice)
-                            <button class="btn btn-danger" style="width: 100%; margin-top: 15px;">Order</button>
-                        }
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -60,6 +70,12 @@
 else
 {
     <h1 class="text-center">There are no products in your shopping cart!</h1>
+}
+
+@section Footer {
+    <footer class="text-center">
+        <p>&copy; @DateTime.Now.Year - Sports Store</p>
+    </footer>
 }
 
 

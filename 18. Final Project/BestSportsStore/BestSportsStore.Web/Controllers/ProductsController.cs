@@ -1,7 +1,6 @@
 ﻿namespace BestSportsStore.Web.Controllers
 {
     using Infrastructure.Mapping;
-    using Microsoft.AspNet.Identity;
     using Models.Product;
 
     using Services.Contracts;
@@ -16,47 +15,27 @@
         {
         }
 
-        public ActionResult Index(string category, string subCategory, string query = null, int page = 1)
+        public ActionResult Index(string category, string subCategory, string query = null, int page = 1, string sortBy = SortByDefault, string sortOrder = SortOrderDefault)
         {
             query = query == null ? string.Empty : query;
             var pagesCount = this.ProductsService.GetAllByCategory(category, subCategory, query).Count();
             var products = this.ProductsService
                  .GetAllByCategory(category, subCategory, query)
-                 .To<ProductViewModel>()
-                 .OrderBy(p => p.Title)
-                 .Skip((page - 1) * PageSize)
-                 .Take(PageSize)
-                 .ToList();
-
+                 .To<ProductViewModel>();
+            
             var viewModel = new PaginationViewModel()
             {
                 CurrentPage = page,
-                Products = products,
+                Products = this.Sort(products, sortBy, sortOrder).Skip((page - 1) * PageSize).Take(PageSize).ToList(),
                 Category = category,
                 SubCategory = subCategory,
                 Query = query,
+                SortBy = sortBy,
+                SortOrder = sortOrder,
                 PagesCount = (int)Math.Ceiling(pagesCount / (decimal)PageSize)
             };
 
             return PartialView(PartialViewProducts, viewModel);
-        }
-
-        public ActionResult AutoCompleteData(string category, string subCategory, string brand, string sport)
-        {
-            var data = this.ProductsService
-                .GetAllTitleAndContent()
-                .ToList();
-
-            var viewModel = new SearchViewModel
-            {
-                Data = data,
-                Category = category,
-                SubCategory = subCategory,
-                Brand = brand,
-                Sport = sport,
-            };
-
-            return PartialView(PartialViewSearch, viewModel);
         }
 
         public ActionResult Details(int id)

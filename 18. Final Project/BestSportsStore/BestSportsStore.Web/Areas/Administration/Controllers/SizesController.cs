@@ -3,11 +3,11 @@
     using Data.Models;
     using Data.Repositories;
     using Infrastructure.Mapping;
-    using Kendo.Mvc.Extensions;
-    using Kendo.Mvc.UI;
-    using Web.Models.Product;
+    using Models;
+    using System;
     using System.Linq;
     using System.Web.Mvc;
+    using Web.Models.Product;
 
     public class SizesController : BaseAdminController
     {
@@ -18,56 +18,66 @@
             this.sizes = sizes;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
+        {
+            var pagesCount = this.sizes.All().Count();
+            var viewModel = new SizeGridViewModel
+            {
+                CurrentPage = page,
+                PagesCount = (int) Math.Ceiling(pagesCount / (decimal) PageSize),
+                Sizes = this.sizes.All().To<SizeViewModel>().OrderBy(s => s.Value).Skip((page - 1) * PageSize).Take(PageSize).ToList()
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult Create()
         {
             return View();
         }
 
-        public JsonResult Read([DataSourceRequest] DataSourceRequest request)
-        {
-            var sizes = this.sizes
-               .All().To<SizeViewModel>();
-
-            return Json(sizes.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult Update([DataSourceRequest] DataSourceRequest request, SizeViewModel size)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(SizeViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var sizeEntry = this.sizes.All().FirstOrDefault(s => s.Id == size.Id);
-                sizeEntry.Value = size.Value;
-                this.sizes.Update(sizeEntry);
+                var sizeDb = this.Mapper.Map<Size>(model);
+                this.sizes.Add(sizeDb);
                 this.sizes.SaveChanges();
             }
 
-            return Json(new[] { size }.ToDataSourceResult(request, ModelState));
+            return RedirectToAction("Index");
         }
 
-        public JsonResult Create([DataSourceRequest] DataSourceRequest request, SizeViewModel size)
+        [HttpGet]
+        public ActionResult Update(int sizeId)
+        {
+            var viewModel = this.sizes.All().To<SizeViewModel>().FirstOrDefault(s => s.Id == sizeId);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(SizeViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var sizeToAdd = new Size
-                {
-                    Value = size.Value
-                };
-
-                this.sizes.Add(sizeToAdd);
-
+                var sizeDb = this.Mapper.Map<Size>(model);
+                this.sizes.Update(sizeDb);
                 this.sizes.SaveChanges();
             }
 
-            return Json(new[] { size }.ToDataSourceResult(request, ModelState));
+            return RedirectToAction("Index");
         }
 
-        public JsonResult Destroy([DataSourceRequest] DataSourceRequest request, SizeViewModel size)
+        public ActionResult Delete(int sizeId, string url)
         {
-            var sizeEntry = this.sizes.All().FirstOrDefault(s => s.Id == size.Id);
-            this.sizes.Delete(sizeEntry);
+            this.sizes.Delete(sizeId);
             this.sizes.SaveChanges();
 
-            return Json(new[] { size }.ToDataSourceResult(request, ModelState));
+            return Redirect(url);
         }
     }
 }

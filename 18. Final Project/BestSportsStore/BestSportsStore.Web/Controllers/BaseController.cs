@@ -2,15 +2,19 @@
 {
     using AutoMapper;
     using Infrastructure.Mapping;
+    using Microsoft.AspNet.Identity;
+    using Models.Product;
     using Services.Contracts;
+    using System.Linq;
     using System.Web.Mvc;
 
     public class BaseController : Controller
     {
         protected const string PartialViewProducts = "_ProductsPartial";
-        protected const string PartialViewSearch = "_SearchPartial";
         protected const int PageSize = 3;
         protected const string Underscore = "_";
+        protected const string SortByDefault = "Likes";
+        protected const string SortOrderDefault = "Desc";
 
         private readonly IProductsService productsService;
 
@@ -33,6 +37,33 @@
             {
                 return this.productsService;
             }
+        }
+
+        public string CurrentUserId
+        {
+            get
+            {
+                return this.HttpContext.User.Identity.GetUserId();
+            }
+        }
+
+        protected IQueryable<ProductViewModel> Sort(IQueryable<ProductViewModel> products, string sortBy, string sortOrder)
+        {
+            if (sortBy == SortByDefault)
+            {
+                if (sortOrder == SortOrderDefault)
+                    return products.OrderByDescending(p => p.Likes.Count);
+                else
+                    return products.OrderBy(p => p.Likes.Count);
+            }
+
+            if (sortBy == "Price")
+            {
+                if (sortOrder == SortOrderDefault)
+                    return products.OrderByDescending(p => p.Price);
+            }
+
+            return products.OrderBy(p => p.Price);
         }
     }
 }

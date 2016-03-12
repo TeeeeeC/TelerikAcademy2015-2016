@@ -20,11 +20,13 @@
 @using (Html.BeginForm("Index", controllerName, new { category = Model.Category, subCategory = Model.SubCategory, brand = Model.Brand, sport = Model.Sport }))
 {
     <div class="navbar-fixed-top" style="margin-left: 65%; margin-top: 50px;">
-        @(Html.Kendo().AutoComplete()
-          .Name("query")
-          .HtmlAttributes(new { style = "width: 33%" })
-          .Filter("contains")
-          .Placeholder("Search by Title or Content...").BindTo(Model.Data))
-        <input type="submit" value="Search" class="btn btn-primary" style="margin-left: -10px" />
+        <input type="text" placeholder="Search by Title or Content..." class="form-control" name="query" style="border-radius: 15px" value="@Model.Query" />
+        <input type="submit" value="Search" class="btn btn-primary" style="margin-left:220px; margin-top: -58px; border-radius: 15px" />
     </div>
+}
+
+@section Footer {
+    <footer class="text-center">
+        <p>&copy; @DateTime.Now.Year - Sports Store</p>
+    </footer>
 }

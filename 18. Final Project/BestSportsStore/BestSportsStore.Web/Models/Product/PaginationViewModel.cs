@@ -18,9 +18,9 @@
 
         public string Query { get; set; }
 
-        public bool Ascending { get; set; }
+        public string SortBy { get; set; }
 
-        public string OrderBy { get; set; }
+        public string SortOrder { get; set; }
 
         public IList<ProductViewModel> Products { get; set; }
     }

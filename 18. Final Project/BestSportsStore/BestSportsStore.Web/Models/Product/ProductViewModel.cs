@@ -9,34 +9,43 @@
     using Menu.Category;
     using Menu.Brand;
     using Sport;
+    using System.ComponentModel.DataAnnotations;
 
     public class ProductViewModel : IMapFrom<Product>
     {
         public int Id { get; set; }
 
+        [Required]
         public string Title { get; set; }
 
+        [Required]
         public string Content { get; set; }
 
+        [Required]
         public string ImageUrl { get; set; }
 
+        [Required]
         public decimal Price { get; set; }
+
+        public int CategoryId { get; set; }
 
         public CategoryViewModel Category { get; set; }
 
+        public int SubCategoryId { get; set; }
+
         public SubCategoryViewModel SubCategory { get; set; }
+
+        public int BrandId { get; set; }
 
         public BrandViewModel Brand { get; set; }
 
+        public int SportId { get; set; }
+
         public SportViewModel Sport { get; set; }
-
-        public string SizeValues { get; set; }
-
-        public int Quantity { get; set; }
 
         public ICollection<LikeViewModel> Likes { get; set; }
 
-        public ICollection<SizeViewModel> Sizes { get; set; }
+        public IList<SizeViewModel> Sizes { get; set; }
        
         public ICollection<CommentViewModel> Comments { get; set; }
     }

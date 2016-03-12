@@ -12,6 +12,6 @@
 
         public string Sport { get; set; }
 
-        public IEnumerable<string> Data { get; set; }
+        public string Query { get; set; }
     }
 }

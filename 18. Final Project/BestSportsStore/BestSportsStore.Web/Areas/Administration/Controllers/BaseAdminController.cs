@@ -7,6 +7,8 @@
     [Authorize(Roles = "Administator")]
     public abstract class BaseAdminController : Controller
     {
+        protected const int PageSize = 10;
+
         protected IMapper Mapper
         {
             get

@@ -11,15 +11,7 @@
 
         public decimal TotalPrice { get; set; }
 
-        public string ProductIds { get; set; }
-
-        public string ProductSizes { get; set; }
-
-        public string ProductTitles { get; set; }
-
-        public string Sizes { get; set; }
-
-        public ICollection<ProductViewModel> Products { get; set; }
+        public IList<ProductViewModel> Products { get; set; }
 
     }
 }

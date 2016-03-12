@@ -11,8 +11,7 @@
 
 <div class="row">
     <div class="col-md-1">Order Id</div>
-    <div class="col-md-5">Products</div>
-    <div class="col-md-2">Sizes</div>
+    <div class="col-md-1">Details</div>
     <div class="col-md-2">Total Price</div>
 </div>
 
@@ -20,8 +19,13 @@
 {
     <div class="row">
         <div class="col-md-1">@order.Id</div>
-        <div class="col-md-5">@order.ProductTitles</div>
-        <div class="col-md-2">@order.ProductSizes</div>
+        <div class="col-md-1">@Html.ActionLink("Details", "details/" + order.Id, "orders")</div>
         <div class="col-md-2">@order.TotalPrice £</div>
     </div>
+}
+
+@section Footer {
+    <footer class="text-center">
+        <p>&copy; @DateTime.Now.Year - Sports Store</p>
+    </footer>
 }
