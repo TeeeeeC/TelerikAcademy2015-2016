@@ -1,0 +1,50 @@
+﻿@using BestSportsStore.Web.Models.Orders
+@model OrderViewModel
+
+@{
+    ViewBag.Title = "Details";
+    var counter = 1;
+}
+
+<h2>Order @Model.Id</h2>
+
+<div class="panel-group text-center" style="margin-top: 50px;">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h1>Products</h1></div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-1">N</div>
+                <div class="col-md-2">Image</div>
+                <div class="col-md-3">Title</div>
+                <div class="col-md-1">Brand</div>
+                <div class="col-md-1">Sport</div>
+                <div class="col-md-1">Category</div>
+                <div class="col-md-1">SubCategory</div>
+                <div class="col-md-2">Price</div>
+            </div>
+                @foreach (var product in Model.Products)
+                {
+                    <div class="row">
+                        <div class="col-md-1">@(counter++)</div>
+                        <div class="col-md-2"><img src="@product.ImageUrl" style="width: 100px; height: 50px" /></div>
+                        <div class="col-md-3">@product.Title</div>
+                        <div class="col-md-1">@product.Brand.Name</div>
+                        <div class="col-md-1">@product.Sport.Name</div>
+                        <div class="col-md-1">@product.Category.Name</div>
+                        <div class="col-md-1">@product.SubCategory.Name</div>
+                        <div class="col-md-2">@product.Price £</div>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-3"><h3>Total: @Model.TotalPrice £</h3></div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
