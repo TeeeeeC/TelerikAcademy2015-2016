@@ -1,0 +1,25 @@
+﻿<div ng-controller="CommitDetailsCtrl">
+    <div class="jumbotron">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <strong>Username</strong>
+            </div>
+            <div class="col-md-4">
+                <strong>Source code</strong>
+            </div>
+            <div class="col-md-4">
+                <strong>Created on</strong>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                {{commit.UserName}}
+            </div>
+            <div class="col-md-4">
+                {{commit.SourceCode}}
+            </div>
+            <div class="col-md-4">
+                {{commit.CreatedOn | beautifulDate}}
+            </div>
+        </div>
+</div>

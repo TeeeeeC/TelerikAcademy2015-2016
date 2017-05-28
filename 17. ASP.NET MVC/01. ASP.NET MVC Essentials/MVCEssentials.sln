@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "MVCEssentials.Web\Calculator.csproj", "{6E8C2886-9CE2-4990-AE5E-4478D7D9FE96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsSystem.Web", "NewsSystem.Web\NewsSystem.Web.csproj", "{C27F5A5E-30BA-4513-A2D0-4D1C903A8393}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RouteCustomContstraint", "RouteCustomContstraint\RouteCustomContstraint.csproj", "{C24993FC-E766-42CA-9EDE-E85B0F2EE3C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E8C2886-9CE2-4990-AE5E-4478D7D9FE96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E8C2886-9CE2-4990-AE5E-4478D7D9FE96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E8C2886-9CE2-4990-AE5E-4478D7D9FE96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E8C2886-9CE2-4990-AE5E-4478D7D9FE96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C27F5A5E-30BA-4513-A2D0-4D1C903A8393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C27F5A5E-30BA-4513-A2D0-4D1C903A8393}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C27F5A5E-30BA-4513-A2D0-4D1C903A8393}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C27F5A5E-30BA-4513-A2D0-4D1C903A8393}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C24993FC-E766-42CA-9EDE-E85B0F2EE3C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C24993FC-E766-42CA-9EDE-E85B0F2EE3C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C24993FC-E766-42CA-9EDE-E85B0F2EE3C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C24993FC-E766-42CA-9EDE-E85B0F2EE3C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="catalog.xslt"?>
+<catalog>
+  <album>
+    <name>Runaway</name>
+    <artist>Bon Jovi</artist>
+    <year>1984</year>
+    <producer>Harry Balk</producer>
+    <price>45</price>
+    <songs>
+      <song>
+        <title>Runaway</title>
+        <duration>3:54</duration>
+      </song>
+      <song>
+        <title>A Teardrop To The Sea</title>
+        <duration>5:07</duration>
+      </song>
+      <song>
+        <title>We Don'T Run</title>
+        <duration>3:17</duration>
+      </song>
+    </songs>
+  </album>
+  <album>
+    <name>The Day Is My Enemy</name>
+    <artist>The Prodigy</artist>
+    <year>2015</year>
+    <producer>Liam Howlett</producer>
+    <price>19</price>
+    <songs>
+      <song>
+        <title>Get Your Fight On</title>
+        <duration>5:54</duration>
+      </song>
+      <song>
+        <title>Wall Of Death</title>
+        <duration>4:27</duration>
+      </song>
+    </songs>
+  </album>
+</catalog>

@@ -1,0 +1,24 @@
+﻿<div ng-controller="HomeCtrl" id="home-page">
+    <div class="panel panel-default text-center">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Games</div>
+
+        <!-- Table -->
+        <table class="table" align="center">
+            <tr>
+                <th>State</th>
+                <th>FirstPlayer (X)</th>
+                <th>SecondPlayer (O)</th>
+                <th>Available Game</th>
+                <th>Play Game</th>
+            </tr>
+            <tr ng-repeat="game in games">
+                <td>{{game.State}}</td>
+                <td>{{game.FirstPlayer.Email}}</td>
+                <td>{{game.SecondPlayer.Email}}</td>
+                <td><input type="button" value="Join" class="btn btn-danger" data-ng-disabled="disableJoin(game)" ng-click="join()" ng-hide="game.SecondPlayer.Email"/></td>
+                <td><a href="#/play" class="btn btn-success" style="text-decoration: none" ng-show="showPlay(game)" ng-click="setCurrentGameId(game.Id)">{{showBtn(game)}}</a></td>
+            </tr>
+        </table>
+    </div>
+</div>

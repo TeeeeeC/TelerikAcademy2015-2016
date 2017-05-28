@@ -1,0 +1,13 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UK.master.cs" Inherits="_2.Company.UK.UK" %>
+<asp:Content ID="ContentUK" ContentPlaceHolderID="ContentPlaceHolderPageContent" runat="server">
+    <h1>Welcome to United Kingdom!</h1>
+    <aside id="sidebar">
+        <div class="sidebar-title">Menu</div>
+        <ul>
+            <li><a href="~/UK/Home.aspx" runat="server">Home</a></li>
+            <li><a href="~/UK/About.aspx" runat="server">About</a></li>
+            <li><a href="~/UK/Contacts.aspx" runat="server">Contacts</a></li>
+        </ul>
+    </aside>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolderMain" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>

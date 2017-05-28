@@ -1,0 +1,82 @@
+﻿html, body, div, header, ul, li, nav, article, h1 {
+    padding: 0;
+    margin: 0;
+    font-family: Tahoma, sans-serif;
+    font-size: 14px;
+}
+
+body {
+    #wrapper {
+        width: 960px;
+        margin-top: 17px;
+        margin-left: 5px;
+
+        header {
+            background-image: url(images/topnav_divider.png);
+
+            div#archive ul {
+                list-style-type: none;
+                margin-left: 760px;
+
+                li {
+                    display: inline;
+                    font-size: 10px;
+                    padding-left: 10px;
+
+                    a {
+                        position: relative;
+                        top: -17px;
+                        left: -5px;
+                        text-decoration: none;
+                        color: black;
+                    }
+                }
+            }
+
+            div#header {
+                height: 50px;
+                nav  ul {
+                    list-style-type: none;
+                    padding-left: 30px;
+                    padding-top: 5px;
+
+                    li {
+                        display: inline;
+                        font-size: 18px;
+                        padding-left: 20px;
+
+                        a {
+                            text-decoration: none;
+                            color: #FFF5CA;
+                        }
+                    }
+                }
+
+                #nav ul li a:first-letter {
+                    text-transform: uppercase;
+                }
+
+                h1 {
+                    position: relative;
+                    font-size: 28px;
+                    color: #FEFFFF;
+                    text-align: right;
+                    top: -30px;
+                    left: -15px;
+                }
+            }
+        }
+
+        div#content {
+            h1 {
+                font-size: 24px;
+                padding-top: 20px;
+            }
+
+            article {
+                text-align: justify;
+                color: #333333;
+            }
+        }
+    }
+}

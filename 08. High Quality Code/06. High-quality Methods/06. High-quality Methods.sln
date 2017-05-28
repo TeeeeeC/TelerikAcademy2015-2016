@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. QualityMethods", "01. QualityMethods\01. QualityMethods.csproj", "{542B23B9-3018-4A08-A9F6-645FAC258862}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.1 ConvertStringToNumberByGivenBaseCSharp2", "02.1 ConvertStringToNumberByGivenBaseCSharp2\02.1 ConvertStringToNumberByGivenBaseCSharp2.csproj", "{8E26573A-3B3C-4863-A94F-1ABC1DE53393}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.2 SumOddDifference", "02.2 SumOddDifference\02.2 SumOddDifference.csproj", "{CBDA0BEA-20D7-4DDC-BB43-CA0E32954295}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.3 FindPathSumInMatrix", "02.3 FindPathSumInMatrix\02.3 FindPathSumInMatrix.csproj", "{01673218-8E84-44A1-9C7E-7A255E0FA101}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{542B23B9-3018-4A08-A9F6-645FAC258862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{542B23B9-3018-4A08-A9F6-645FAC258862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{542B23B9-3018-4A08-A9F6-645FAC258862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{542B23B9-3018-4A08-A9F6-645FAC258862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E26573A-3B3C-4863-A94F-1ABC1DE53393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E26573A-3B3C-4863-A94F-1ABC1DE53393}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E26573A-3B3C-4863-A94F-1ABC1DE53393}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E26573A-3B3C-4863-A94F-1ABC1DE53393}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBDA0BEA-20D7-4DDC-BB43-CA0E32954295}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBDA0BEA-20D7-4DDC-BB43-CA0E32954295}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBDA0BEA-20D7-4DDC-BB43-CA0E32954295}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBDA0BEA-20D7-4DDC-BB43-CA0E32954295}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01673218-8E84-44A1-9C7E-7A255E0FA101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01673218-8E84-44A1-9C7E-7A255E0FA101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01673218-8E84-44A1-9C7E-7A255E0FA101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01673218-8E84-44A1-9C7E-7A255E0FA101}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

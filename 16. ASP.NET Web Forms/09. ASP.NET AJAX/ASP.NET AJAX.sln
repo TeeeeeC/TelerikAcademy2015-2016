@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.Employees", "1.Employees\1.Employees.csproj", "{2309334E-40A8-44F6-BFD7-7467229C2303}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.Chat", "2.Chat\2.Chat.csproj", "{A5FD6532-0A84-466A-BE2B-6C84D17ED4D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.PhotoAlbum", "3.PhotoAlbum\3.PhotoAlbum.csproj", "{08ECDD1F-9E23-4CBD-A7A6-990BA8007AB7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2309334E-40A8-44F6-BFD7-7467229C2303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2309334E-40A8-44F6-BFD7-7467229C2303}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2309334E-40A8-44F6-BFD7-7467229C2303}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2309334E-40A8-44F6-BFD7-7467229C2303}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5FD6532-0A84-466A-BE2B-6C84D17ED4D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5FD6532-0A84-466A-BE2B-6C84D17ED4D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5FD6532-0A84-466A-BE2B-6C84D17ED4D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5FD6532-0A84-466A-BE2B-6C84D17ED4D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08ECDD1F-9E23-4CBD-A7A6-990BA8007AB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08ECDD1F-9E23-4CBD-A7A6-990BA8007AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08ECDD1F-9E23-4CBD-A7A6-990BA8007AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08ECDD1F-9E23-4CBD-A7A6-990BA8007AB7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

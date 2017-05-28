@@ -1,0 +1,23 @@
+﻿<div ng-controller="CommitAddCtrl">
+    <div class="container">
+        <div class="well">
+            <form name="addCommitForm" class="form-horizontal">
+                <fieldset>
+                    <legend>Add New Commit</legend>
+                    <div class="form-group">
+                        <label for="commit" class="col-md-2 control-label">Source code</label>
+                        <div class="col-md-10">
+                            <textarea kendo-editor k-ng-model="commit" required></textarea>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <button ng-click="addCommit(commit)" ng-disabled="addCommitForm.$invalid" class="btn btn-primary">
+                            Create
+                        </button>
+                        <a href="#/" class="btn btn-primary">Cancel</a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

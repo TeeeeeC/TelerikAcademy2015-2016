@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Sports Store</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+</head>
+<body>
+    <div class="navbar-fixed-top">
+        <div class="container">
+            @Html.Action("Menu", "Home", new { area = "" })
+        </div>
+    </div>
+
+    @RenderSection("styles", required: false)
+
+    @RenderSection("Search", required: false)
+
+    @Html.Action("ShoppingCart", "Buy", new { area = "" })
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        @RenderSection("footer", required: false)
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

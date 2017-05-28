@@ -1,0 +1,23 @@
+1. Java and C#
+Both have system garbage collection and have strict compiler conditions which are checked such as 
+array indexes, initialisation of variables before use. C# allows operator overloading, Java does not.
+They are support object orriented code.
+
+2. C and C#
+C is unmanaged code, and C# is managed by the .NET CLR (Common Language Runtime).
+Managed code means that many of the low-level activities that one has to worry about with C, 
+such as memory management, garbage collection, pointers, etc, are automatically handled for you.  
+C# is an object orienated language. C is a structed language. 
+
+3. C++ and C#
+C++ is a low level language, C# - high level that is componet oriented. In C# memory management is automatically
+handled by garbage collector, in C++, the memomy has to be explicitly deleted.2. C# doesn't have function pointers unlike
+C++.
+
+4. Javascript and C#
+Javascript have two equality operators[== and ===], C# have one[==]. Javascript does not support function overloading unlike C#.
+Javascript support undefined function parameter, when we write a method with two parameters, we can call it with one parameter for example.
+
+5. PHP and C#
+They are object orienated language. PHP is platform independent and can run on any platform — Linux, Unix, Mac OS X, Windows.
+C# is built to run only on .NET platform.

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<NewsSystem.Web.Models.User>
+
+<div class="jumbotron text-center">
+    <h1>All Users</h1>
+</div>
+
+@foreach (var itemNew in Model)
+{
+    <div class="row text-center">
+        <p>@itemNew.Id</p>
+        <p>Username: @itemNew.Username</p>
+    </div>
+}

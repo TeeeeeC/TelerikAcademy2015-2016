@@ -1,0 +1,24 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="_2.Company.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <header id="header">
+        <asp:HyperLink runat="server" NavigateUrl="~/MainPage.aspx" 
+        Text="MainPage"/>
+    </header>
+    <form id="MainForm" runat="server">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolderPageContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+    <footer id="footer">
+        &copy 2016
+    </footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿body {
+    background-color: #484646;
+    font-size: 16px;
+}
+
+thead tr th {
+    font-size: 1.4em;
+    text-align: left;
+    color: #9c9898;
+    height: 40px;
+    vertical-align: text-top;
+}
+
+a {
+    text-decoration: none;
+    color: #bab0b0;
+}
+
+td {
+    width: 140px;
+}
+
+.height {
+    height: 30px;
+}
+
+#grey {
+    color: #d4c4c4;
+}
+
+#red {
+    color: red;
+    vertical-align:text-top;
+}
+
+#darkWhite {
+    color: #d7cb71;
+}
+
+#orange {
+    color: #eb5f1e;
+}
+
+#image {
+    width: 20px;
+    vertical-align: bottom;
+}
+
+.userCharacteristics {
+    font-style: italic;
+    color: #f0e6e6;
+}

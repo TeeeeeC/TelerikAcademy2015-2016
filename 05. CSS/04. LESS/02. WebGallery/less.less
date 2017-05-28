@@ -1,0 +1,32 @@
+﻿body, ul, li {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    position: relative;
+    top: 30px;
+    left: 80px;
+    li {
+        display: inline-block;
+        list-style-type: none;
+        a img {
+            width: 251px;
+            height: 201px;
+            padding: 5px;
+        }
+        div.zoom-pic {
+            display: none;
+            position: absolute;
+            top: 261px;
+            left: 0;
+            img {
+                width: 700px;
+                height: 500px;
+            }
+        }
+        a:focus div.zoom-pic {
+            display: block;
+        }
+    }
+}

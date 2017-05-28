@@ -1,0 +1,57 @@
+﻿<div ng-controller="ProjectDetailsCtrl" class="text-center">
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" required placeholder="email" style="display:inline" ng-model="email" />
+            <button class="btn btn-primary" ng-click="joinToProject(email)">Add Collaborator</button>
+        </div>
+        <div class="col-md-6">
+            <a href="#/projects/{{id}}/commits/add" class="btn btn-primary" style="margin-left: 10%">Add Commit</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <h1>{{project.Name}}</h1>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-1">
+            <p>Total Users: {{project.TotalUsers}}</p>
+        </div>
+        <div class="col-md-4">
+            <p>License: {{project.License}}</p>
+        </div>
+        <div class="col-md-1">
+            <p>Created on: {{project.CreatedOn | beautifulDate}}</p>
+        </div>
+        <div class="col-md-6">
+            <p>
+                Collaboratots:
+                <strong ng-repeat="collaboratots in collaborators">
+                    {{collaboratots}},
+                </strong>
+            </p>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div last-commits />
+    </div>
+
+    <div class="row text-center">
+        <div class="col-md-4 text-right">
+            <button class="btn btn-primary" ng-click="prevPage(req)">&lt;&lt;</button>
+            <input class="btn btn-sm" type="number" min="1" ng-model="req.page" />
+            <button class="btn btn-primary" ng-click="nextPage(req)">&gt;&gt;</button>
+        </div>
+        <div class="col-md-4 text-center">
+            <label>PageSize</label>
+            <input type="number" ng-model="req.pageSize" min="1" ng-init="req.pageSize=10"/>
+        </div>
+        <div class="col-md-2 text-left">
+            <label>ByUser</label>
+            <input type="text" ng-model="req.byUser" />
+        </div>
+        <div class="col-md-2 text-left">
+            <button class="btn btn-primary" ng-click="filter(req)">Filter</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+﻿<div class="container" ng-controller="HomeCtrl">
+    <div class="text-center">
+        <h1>Welcome to Trip Exchange</h1>
+        <h3>Find your way to home!</h3>
+    </div>
+    <div id="stats-public" class="text-center">
+        <table class="table">
+            <tr class="text-primary">
+                <td>Trips</td>
+                <td>Finished Trips</td>
+                <td>Users</td>
+                <td>Drivers</td>
+            </tr>
+            <tr>
+                <td>{{tripsTotal}}</td>
+                <td>{{upcomingTrips}}</td>
+                <td>{{usersCount}}</td>
+                <td>{{driversCount}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="panel panel-default text-center" id="trips-public">
+        <div class="panel-heading">Latest trips</div>
+        <table class="table">
+            <tr class="text-primary">
+                <td>Driver</td>
+                <td>From</td>
+                <td>To</td>
+                <td>Departure Time</td>
+            </tr>
+            <tr ng-repeat="trip in trips">
+                <td>{{trip.driverName}}</td>
+                <td>{{trip.from}}</td>
+                <td>{{trip.to}}</td>
+                <td>{{trip.departureDate}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="panel panel-default text-center" id="drivers-public">
+        <div class="panel-heading">Latest drivers</div>
+        <table class="table">
+            <tr class="text-primary">
+                <td>Name</td>
+                <td>Upcoming Trips</td>
+                <td>Total Trips</td>
+            </tr>
+            <tr ng-repeat="driver in drivers">
+                <td>{{driver.name}}</td>
+                <td>{{driver.numberOfUpcomingTrips}}</td>
+                <td>{{driver.numberOfTotalTrips}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

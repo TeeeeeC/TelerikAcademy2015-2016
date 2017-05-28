@@ -1,0 +1,10 @@
+﻿<table class="table table-striped table-hover text-center">
+    <tr>
+        <th class="text-center">Username</th>
+        <th class="text-center">Created on</th>
+    </tr>
+    <tr ng-repeat="commit in last10Commits">
+        <td><a href="#/commits/{{commit.Id}}">{{commit.UserName}}</a></td>
+        <td>{{commit.CreatedOn | beautifulDate}}</td>
+    </tr>
+</table>

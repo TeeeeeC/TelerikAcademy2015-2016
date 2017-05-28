@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. SizeClass", "01. SizeClass\01. SizeClass.csproj", "{CA6666FD-FB4B-4FA6-8070-0631B8A4F378}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. PrintStatistics", "02. PrintStatistics\02. PrintStatistics.csproj", "{9EF3366E-9B3C-45EC-B26D-51261D67C12D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA6666FD-FB4B-4FA6-8070-0631B8A4F378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA6666FD-FB4B-4FA6-8070-0631B8A4F378}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA6666FD-FB4B-4FA6-8070-0631B8A4F378}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA6666FD-FB4B-4FA6-8070-0631B8A4F378}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EF3366E-9B3C-45EC-B26D-51261D67C12D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EF3366E-9B3C-45EC-B26D-51261D67C12D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EF3366E-9B3C-45EC-B26D-51261D67C12D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EF3366E-9B3C-45EC-B26D-51261D67C12D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

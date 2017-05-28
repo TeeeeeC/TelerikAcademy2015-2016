@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars", "Cars\Cars.csproj", "{AEF2B358-D3E3-465D-B73D-1E777B79B536}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind", "Northwind\Northwind.csproj", "{9ED87161-B931-424D-9502-FFFC061BE680}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeView", "TreeView\TreeView.csproj", "{2C17761F-62A1-470E-8C94-F316C9647C40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingAndPaging", "SortingAndPaging\SortingAndPaging.csproj", "{9B889E7F-29D9-4AC5-8220-4E5BD6EA0EFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEF2B358-D3E3-465D-B73D-1E777B79B536}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF2B358-D3E3-465D-B73D-1E777B79B536}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF2B358-D3E3-465D-B73D-1E777B79B536}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF2B358-D3E3-465D-B73D-1E777B79B536}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ED87161-B931-424D-9502-FFFC061BE680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ED87161-B931-424D-9502-FFFC061BE680}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ED87161-B931-424D-9502-FFFC061BE680}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ED87161-B931-424D-9502-FFFC061BE680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C17761F-62A1-470E-8C94-F316C9647C40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C17761F-62A1-470E-8C94-F316C9647C40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C17761F-62A1-470E-8C94-F316C9647C40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C17761F-62A1-470E-8C94-F316C9647C40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B889E7F-29D9-4AC5-8220-4E5BD6EA0EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B889E7F-29D9-4AC5-8220-4E5BD6EA0EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B889E7F-29D9-4AC5-8220-4E5BD6EA0EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B889E7F-29D9-4AC5-8220-4E5BD6EA0EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
